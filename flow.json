@@ -1,1 +1,2463 @@
-[]
+[
+    {
+        "id": "cd92e76e571d7df9",
+        "type": "tab",
+        "label": "From Roaster",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "0625af20015678ce",
+        "type": "tab",
+        "label": "PID control",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "6510951e07e95904",
+        "type": "tab",
+        "label": "To Roaster",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "225e7b059e1c99bf",
+        "type": "tab",
+        "label": "UI Basic Controls",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "84c93d7c7867d6c7",
+        "type": "tab",
+        "label": "UI PID Control",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "68ed597e2c434a88",
+        "type": "tab",
+        "label": "UI Supervisor",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "fe8e62537f119f1d",
+        "type": "tab",
+        "label": "Timer",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "eae5d0f8246cac51",
+        "type": "subflow",
+        "name": "Decimate",
+        "info": "\n\nReduce data by only passing every nth point",
+        "category": "",
+        "in": [
+            {
+                "x": 180,
+                "y": 140,
+                "wires": [
+                    {
+                        "id": "7388417d4984619e"
+                    }
+                ]
+            }
+        ],
+        "out": [
+            {
+                "x": 540,
+                "y": 140,
+                "wires": [
+                    {
+                        "id": "7388417d4984619e",
+                        "port": 0
+                    }
+                ]
+            }
+        ],
+        "env": [
+            {
+                "name": "count",
+                "type": "num",
+                "value": "0"
+            }
+        ],
+        "meta": {},
+        "color": "#DDAA99"
+    },
+    {
+        "id": "443b227bc7c38864",
+        "type": "ui_base",
+        "theme": {
+            "name": "theme-dark",
+            "lightTheme": {
+                "default": "#0094CE",
+                "baseColor": "#0094CE",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": true,
+                "reset": false
+            },
+            "darkTheme": {
+                "default": "#097479",
+                "baseColor": "#097479",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": true,
+                "reset": false
+            },
+            "customTheme": {
+                "name": "Untitled Theme 1",
+                "default": "#4B7930",
+                "baseColor": "#4B7930",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+            },
+            "themeState": {
+                "base-color": {
+                    "default": "#097479",
+                    "value": "#097479",
+                    "edited": false
+                },
+                "page-titlebar-backgroundColor": {
+                    "value": "#097479",
+                    "edited": false
+                },
+                "page-backgroundColor": {
+                    "value": "#111111",
+                    "edited": false
+                },
+                "page-sidebar-backgroundColor": {
+                    "value": "#333333",
+                    "edited": false
+                },
+                "group-textColor": {
+                    "value": "#0eb8c0",
+                    "edited": false
+                },
+                "group-borderColor": {
+                    "value": "#555555",
+                    "edited": false
+                },
+                "group-backgroundColor": {
+                    "value": "#333333",
+                    "edited": false
+                },
+                "widget-textColor": {
+                    "value": "#eeeeee",
+                    "edited": false
+                },
+                "widget-backgroundColor": {
+                    "value": "#097479",
+                    "edited": false
+                },
+                "widget-borderColor": {
+                    "value": "#333333",
+                    "edited": false
+                },
+                "base-font": {
+                    "value": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+                }
+            },
+            "angularTheme": {
+                "primary": "indigo",
+                "accents": "blue",
+                "warn": "red",
+                "background": "grey",
+                "palette": "light"
+            }
+        },
+        "site": {
+            "name": "Node-RED Dashboard",
+            "hideToolbar": "false",
+            "allowSwipe": "false",
+            "lockMenu": "false",
+            "allowTempTheme": "true",
+            "dateFormat": "DD/MM/YYYY",
+            "sizes": {
+                "sx": 48,
+                "sy": 48,
+                "gx": 6,
+                "gy": 6,
+                "cx": 6,
+                "cy": 6,
+                "px": 0,
+                "py": 0
+            }
+        }
+    },
+    {
+        "id": "053d3106b7802878",
+        "type": "ui_tab",
+        "name": "Basic Controls",
+        "icon": "dashboard",
+        "order": 1,
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "3f1ad68c33459cd7",
+        "type": "ui_group",
+        "name": "Auto/Manual",
+        "tab": "053d3106b7802878",
+        "order": 1,
+        "disp": true,
+        "width": "4",
+        "collapse": false
+    },
+    {
+        "id": "cf2399f4fbeaac53",
+        "type": "ui_group",
+        "name": "Heater and Fan",
+        "tab": "053d3106b7802878",
+        "order": 2,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "8e52b23debbd3419",
+        "type": "ui_group",
+        "name": "Temperature",
+        "tab": "053d3106b7802878",
+        "order": 3,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "535c75118a4d1230",
+        "type": "ui_tab",
+        "name": "PID Control",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "75c8cc1919f5db68",
+        "type": "ui_group",
+        "name": "PID",
+        "tab": "535c75118a4d1230",
+        "order": 6,
+        "disp": true,
+        "width": 18,
+        "collapse": false
+    },
+    {
+        "id": "6f573b6089510ef0",
+        "type": "ui_spacer",
+        "z": "0625af20015678ce",
+        "name": "spacer",
+        "group": "75c8cc1919f5db68",
+        "order": 8,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "e96deacfaca1ebf7",
+        "type": "ui_spacer",
+        "z": "0625af20015678ce",
+        "name": "spacer",
+        "group": "75c8cc1919f5db68",
+        "order": 10,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "42788b811e3d0caf",
+        "type": "ui_spacer",
+        "z": "0625af20015678ce",
+        "name": "spacer",
+        "group": "75c8cc1919f5db68",
+        "order": 12,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "ce056a864490e611",
+        "type": "ui_spacer",
+        "z": "0625af20015678ce",
+        "name": "spacer",
+        "group": "75c8cc1919f5db68",
+        "order": 13,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "6ab5988b2b8a317d",
+        "type": "ui_spacer",
+        "z": "0625af20015678ce",
+        "name": "spacer",
+        "group": "75c8cc1919f5db68",
+        "order": 14,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "14b3b940e36bb1ca",
+        "type": "ui_spacer",
+        "z": "0625af20015678ce",
+        "name": "spacer",
+        "group": "75c8cc1919f5db68",
+        "order": 17,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "4d75df46f32fc4e9",
+        "type": "ui_spacer",
+        "z": "0625af20015678ce",
+        "name": "spacer",
+        "group": "75c8cc1919f5db68",
+        "order": 18,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "5c4982165bdb70a1",
+        "type": "ui_spacer",
+        "z": "0625af20015678ce",
+        "name": "spacer",
+        "group": "75c8cc1919f5db68",
+        "order": 19,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "4c883cfc5e95a4cb",
+        "type": "ui_spacer",
+        "z": "0625af20015678ce",
+        "name": "spacer",
+        "group": "75c8cc1919f5db68",
+        "order": 21,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "a6963b3b4373bd48",
+        "type": "ui_spacer",
+        "z": "0625af20015678ce",
+        "name": "spacer",
+        "group": "75c8cc1919f5db68",
+        "order": 22,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "c09026724a7b0af2",
+        "type": "ui_spacer",
+        "z": "0625af20015678ce",
+        "name": "spacer",
+        "group": "75c8cc1919f5db68",
+        "order": 23,
+        "width": 4,
+        "height": 1
+    },
+    {
+        "id": "2105a23005b858c0",
+        "type": "ui_spacer",
+        "z": "0625af20015678ce",
+        "name": "spacer",
+        "group": "75c8cc1919f5db68",
+        "order": 25,
+        "width": 11,
+        "height": 1
+    },
+    {
+        "id": "69c704d3b69f3fd5",
+        "type": "ui_group",
+        "name": "Timer",
+        "tab": "053d3106b7802878",
+        "order": 4,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "bd7809fd2311508d",
+        "type": "serial-port",
+        "serialport": "/dev/ttyACM0",
+        "serialbaud": "115200",
+        "databits": "8",
+        "parity": "none",
+        "stopbits": "1",
+        "waitfor": ":",
+        "dtr": "none",
+        "rts": "none",
+        "cts": "none",
+        "dsr": "none",
+        "newline": "/",
+        "bin": "false",
+        "out": "char",
+        "addchar": "",
+        "responsetimeout": "500"
+    },
+    {
+        "id": "5084e56e3cb6b17b",
+        "type": "function",
+        "z": "cd92e76e571d7df9",
+        "name": "Decode Temperature",
+        "func": "preamble = msg.payload.substr(0,2);\nif (preamble == \":T\")\n{\n    msg.topic = 'Temperature'\n    temperature = msg.payload.substr(2,6);\n    if (isNaN(temperature))\n    {\n        temperature = 0; /* insert zero if bad number */\n    }\n    msg.payload = temperature;\n    return msg;\n}\nreturn null;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 620,
+        "y": 60,
+        "wires": [
+            [
+                "d42108c17655852a"
+            ]
+        ]
+    },
+    {
+        "id": "d42108c17655852a",
+        "type": "function",
+        "z": "cd92e76e571d7df9",
+        "name": "degrees C to F",
+        "func": "C = msg.payload;\nF = (C * 1.8) + 32;\nmsg.payload = F;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 820,
+        "y": 60,
+        "wires": [
+            [
+                "50af048dcef60ad9"
+            ]
+        ]
+    },
+    {
+        "id": "ce95e86e652b82f6",
+        "type": "function",
+        "z": "cd92e76e571d7df9",
+        "name": "Check for undefined",
+        "func": "if (msg.payload == undefined)\n{\n    return null;\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 360,
+        "y": 140,
+        "wires": [
+            [
+                "5084e56e3cb6b17b",
+                "20376c4562846c62",
+                "61099d7491a144f0",
+                "3456ea122c4a1206"
+            ]
+        ]
+    },
+    {
+        "id": "20376c4562846c62",
+        "type": "function",
+        "z": "cd92e76e571d7df9",
+        "name": "Decode Manual/Auto",
+        "func": "preamble = msg.payload.substr(0,2);\nmsg.topic = 'Mode';\nif (preamble == \":C\")\n{\n    msg.payload = \"Auto\";\n    return msg;\n}\nelse if (preamble == \":M\")\n{\n    msg.payload = \"Manual\";\n    return msg;\n}\nreturn null;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 620,
+        "y": 120,
+        "wires": [
+            [
+                "324df6f8d219c9ba"
+            ]
+        ]
+    },
+    {
+        "id": "61099d7491a144f0",
+        "type": "function",
+        "z": "cd92e76e571d7df9",
+        "name": "Decode Heater Setting",
+        "func": "preamble = msg.payload.substr(0,2);\nif (preamble == \":H\")\n{\n    msg.topic = 'Heater Setting'\n    setting = msg.payload.substr(2,3);\n    msg.payload = setting;\n    global.set('heater', setting)\n    return msg;\n}\nreturn null;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 620,
+        "y": 180,
+        "wires": [
+            [
+                "8159242c779048f2"
+            ]
+        ]
+    },
+    {
+        "id": "3456ea122c4a1206",
+        "type": "function",
+        "z": "cd92e76e571d7df9",
+        "name": "Decode Fan Setting",
+        "func": "preamble = msg.payload.substr(0,2);\nif (preamble == \":F\")\n{\n    msg.topic = 'Fan Setting'\n    setting = msg.payload.substr(2,3);\n    msg.payload = setting;\n    global.set('fan',setting)\n    return msg;\n}\nreturn null;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 620,
+        "y": 240,
+        "wires": [
+            [
+                "e375b9ab7c0d4f44"
+            ]
+        ]
+    },
+    {
+        "id": "420aac392a01857a",
+        "type": "link out",
+        "z": "cd92e76e571d7df9",
+        "name": "Temperature",
+        "links": [
+            "6340baff85161ed4",
+            "de9aa95dbecc7ccf",
+            "e77eb8fb524f86bb"
+        ],
+        "x": 1290,
+        "y": 60,
+        "wires": [],
+        "l": true
+    },
+    {
+        "id": "6340baff85161ed4",
+        "type": "link in",
+        "z": "0625af20015678ce",
+        "name": "Temperature",
+        "links": [
+            "420aac392a01857a"
+        ],
+        "x": 190,
+        "y": 240,
+        "wires": [
+            [
+                "67b7b48fa487db4e",
+                "37ae0ebe78a6614d"
+            ]
+        ],
+        "l": true
+    },
+    {
+        "id": "5aad7929c55ba36d",
+        "type": "function",
+        "z": "0625af20015678ce",
+        "name": "Convert output to percent",
+        "func": "percent = Math.round(msg.payload * 100);\nmsg.payload = percent;\nmsg.topic = \"Heater\"\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 810,
+        "y": 140,
+        "wires": [
+            [
+                "3a13894f0cb87442"
+            ]
+        ]
+    },
+    {
+        "id": "17d92ce79bd66528",
+        "type": "function",
+        "z": "0625af20015678ce",
+        "name": "Extract proportional",
+        "func": "/* \nNotice the minus sign before the rounding. The PID node\nreports the value in the opposite sign of how it is applied\nto the output. I prefer changing the sign for display purposes.\n*/\nprop = -Math.round(msg.proportional * 100)/100;\nmsg.payload = prop;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 790,
+        "y": 320,
+        "wires": [
+            [
+                "e6fcaf995045eedc"
+            ]
+        ]
+    },
+    {
+        "id": "f45542f0a4a35cab",
+        "type": "function",
+        "z": "0625af20015678ce",
+        "name": "Extract integral",
+        "func": "/* \nNotice the minus sign before the rounding. The PID node\nreports the value in the opposite sign of how it is applied\nto the output. I prefer changing the sign for display purposes.\n*/\ninteg = -Math.round(msg.integral * 100)/100;\nmsg.payload = integ;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 780,
+        "y": 380,
+        "wires": [
+            [
+                "2f62a49c1e2a375c"
+            ]
+        ]
+    },
+    {
+        "id": "f2528cee9a6ff4f3",
+        "type": "function",
+        "z": "0625af20015678ce",
+        "name": "Extract derivative",
+        "func": "/* \nNotice the minus sign before the rounding. The PID node\nreports the value in the opposite sign of how it is applied\nto the output. I prefer changing the sign for display purposes.\n*/\nder = -Math.round(msg.derivative * 100)/100;\nmsg.payload = der;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 790,
+        "y": 440,
+        "wires": [
+            [
+                "d86fa13a7e81ea37"
+            ]
+        ]
+    },
+    {
+        "id": "ce56903c58e200e6",
+        "type": "function",
+        "z": "0625af20015678ce",
+        "name": "Extract setpoint",
+        "func": "sp = msg.setpoint;\nmsg.payload = sp;\nmsg.topic = \"Setpoint\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 780,
+        "y": 80,
+        "wires": [
+            [
+                "b13727e26dab3c2b"
+            ]
+        ]
+    },
+    {
+        "id": "47c25550d6e0fcf1",
+        "type": "link out",
+        "z": "0625af20015678ce",
+        "name": "Heater setting",
+        "links": [
+            "04a8b4bbacd10d03"
+        ],
+        "x": 1260,
+        "y": 200,
+        "wires": [],
+        "l": true
+    },
+    {
+        "id": "e375b9ab7c0d4f44",
+        "type": "link out",
+        "z": "cd92e76e571d7df9",
+        "name": "Fan setting from roaster",
+        "links": [
+            "c610f5a212aec5d2",
+            "7e9bdf06118f5c80",
+            "d6eccf81da2b5820",
+            "386cb4d907afe984",
+            "63ca7b5b3d840cea"
+        ],
+        "x": 870,
+        "y": 240,
+        "wires": [],
+        "l": true
+    },
+    {
+        "id": "3a13894f0cb87442",
+        "type": "function",
+        "z": "0625af20015678ce",
+        "name": "Limit max output",
+        "func": "/* \n Scale the output to limit max outuput to 80%. \n This is done to extend the life of the heater elements.\n*/\noutput = msg.payload;\nmsg.payload = Math.round(output * 0.8);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1020,
+        "y": 140,
+        "wires": [
+            [
+                "eac9effba9d5642b"
+            ]
+        ]
+    },
+    {
+        "id": "4b340f73e122fdbd",
+        "type": "function",
+        "z": "6510951e07e95904",
+        "name": "Format heater and fan commands",
+        "func": "percent = msg.payload;\n\nif (percent < 10)\n{\n    percent_string = \"00\"+ percent;\n}\nelse if (percent < 100)\n{\n    percent_string = \"0\" + percent;\n}\nelse\n{\n    percent_string = percent;\n}\n\nif (msg.topic == \"Heater\")\n{\n    msg.payload = \":>H\" + percent_string + \"/\";\n}\nelse if (msg.topic == \"Fan\")\n{\n    msg.payload = \":>F\" + percent_string +\"/\";\n}\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 500,
+        "y": 520,
+        "wires": [
+            [
+                "c95b379bb4361548"
+            ]
+        ]
+    },
+    {
+        "id": "25a20751f8205ebe",
+        "type": "inject",
+        "z": "6510951e07e95904",
+        "name": "Request temperature",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "1",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "RequestTemp",
+        "payload": ":?T/",
+        "payloadType": "str",
+        "x": 300,
+        "y": 200,
+        "wires": [
+            [
+                "c95b379bb4361548"
+            ]
+        ]
+    },
+    {
+        "id": "11e90529c17b946f",
+        "type": "inject",
+        "z": "6510951e07e95904",
+        "name": "Request Manual/Auto State",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "5",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": ":?C/",
+        "payloadType": "str",
+        "x": 320,
+        "y": 260,
+        "wires": [
+            [
+                "c95b379bb4361548"
+            ]
+        ]
+    },
+    {
+        "id": "396e7537ec17ef2c",
+        "type": "inject",
+        "z": "6510951e07e95904",
+        "name": "Request Heater Setting",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "5",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": ":?H/",
+        "payloadType": "str",
+        "x": 310,
+        "y": 320,
+        "wires": [
+            [
+                "c95b379bb4361548"
+            ]
+        ]
+    },
+    {
+        "id": "cc31e986b16e0a29",
+        "type": "inject",
+        "z": "6510951e07e95904",
+        "name": "Request Fan Setting",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "5",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": ":?F/",
+        "payloadType": "str",
+        "x": 300,
+        "y": 380,
+        "wires": [
+            [
+                "c95b379bb4361548"
+            ]
+        ]
+    },
+    {
+        "id": "04a8b4bbacd10d03",
+        "type": "link in",
+        "z": "6510951e07e95904",
+        "name": "Heater setting",
+        "links": [
+            "47c25550d6e0fcf1",
+            "23a099aeb4dec8c4"
+        ],
+        "x": 230,
+        "y": 480,
+        "wires": [
+            [
+                "4b340f73e122fdbd"
+            ]
+        ],
+        "l": true
+    },
+    {
+        "id": "0765c15a33a02078",
+        "type": "link in",
+        "z": "6510951e07e95904",
+        "name": "Fan setting",
+        "links": [
+            "9f019c792ed476b4",
+            "dac3049ffdcce49b"
+        ],
+        "x": 230,
+        "y": 560,
+        "wires": [
+            [
+                "4b340f73e122fdbd"
+            ]
+        ],
+        "l": true
+    },
+    {
+        "id": "337c90984e04038a",
+        "type": "function",
+        "z": "cd92e76e571d7df9",
+        "name": "Round to tenths",
+        "func": "F = msg.payload;\nmsg.payload = Math.round(F*10)/10;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1120,
+        "y": 60,
+        "wires": [
+            [
+                "420aac392a01857a"
+            ]
+        ]
+    },
+    {
+        "id": "7497439e2915c6f5",
+        "type": "inject",
+        "z": "0625af20015678ce",
+        "name": "Disable control at start",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "enable",
+        "payload": "0",
+        "payloadType": "num",
+        "x": 230,
+        "y": 60,
+        "wires": [
+            [
+                "37ae0ebe78a6614d"
+            ]
+        ]
+    },
+    {
+        "id": "324df6f8d219c9ba",
+        "type": "link out",
+        "z": "cd92e76e571d7df9",
+        "name": "Manual/Auto state from roaster",
+        "links": [
+            "751398db97668d30",
+            "7a795788c8f90a12"
+        ],
+        "x": 890,
+        "y": 120,
+        "wires": [],
+        "l": true
+    },
+    {
+        "id": "7388417d4984619e",
+        "type": "function",
+        "z": "eae5d0f8246cac51",
+        "name": "Decimate",
+        "func": "c = context.get('count');\nc += 1;\ncontext.set('count', c)\nif (c > 9)\n{\n    context.set('count', 0)\n    return msg;\n}\nreturn null;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "// Code added here will be run once\n// whenever the node is started.\ncontext.set('count', 0)",
+        "finalize": "",
+        "libs": [],
+        "x": 350,
+        "y": 140,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "9f019c792ed476b4",
+        "type": "link out",
+        "z": "84c93d7c7867d6c7",
+        "name": "Fan setting",
+        "links": [
+            "0765c15a33a02078"
+        ],
+        "x": 730,
+        "y": 60,
+        "wires": [],
+        "l": true
+    },
+    {
+        "id": "db186a6a99dfe26b",
+        "type": "ui_switch",
+        "z": "84c93d7c7867d6c7",
+        "name": "Enable switch",
+        "label": "Enable control",
+        "tooltip": "",
+        "group": "75c8cc1919f5db68",
+        "order": 5,
+        "width": 4,
+        "height": 1,
+        "passthru": false,
+        "decouple": "true",
+        "topic": "enable",
+        "topicType": "str",
+        "style": "",
+        "onvalue": "1",
+        "onvalueType": "num",
+        "onicon": "",
+        "oncolor": "",
+        "offvalue": "0",
+        "offvalueType": "num",
+        "officon": "",
+        "offcolor": "",
+        "animate": false,
+        "x": 520,
+        "y": 120,
+        "wires": [
+            [
+                "d2478c323769c186"
+            ]
+        ]
+    },
+    {
+        "id": "d2478c323769c186",
+        "type": "link out",
+        "z": "84c93d7c7867d6c7",
+        "name": "Enable/Disable PID control",
+        "links": [
+            "53a6aea13f8eaf34",
+            "c9b6629ec3cc8c8d"
+        ],
+        "x": 780,
+        "y": 120,
+        "wires": [],
+        "l": true
+    },
+    {
+        "id": "1b18d3aa07f5a260",
+        "type": "ui_slider",
+        "z": "84c93d7c7867d6c7",
+        "name": "Fan",
+        "label": "Fan",
+        "tooltip": "",
+        "group": "75c8cc1919f5db68",
+        "order": 3,
+        "width": 6,
+        "height": 1,
+        "passthru": false,
+        "outs": "end",
+        "topic": "Fan",
+        "topicType": "str",
+        "min": 0,
+        "max": "100",
+        "step": "5",
+        "x": 530,
+        "y": 60,
+        "wires": [
+            [
+                "9f019c792ed476b4"
+            ]
+        ]
+    },
+    {
+        "id": "21f611728df6d86f",
+        "type": "ui_gauge",
+        "z": "84c93d7c7867d6c7",
+        "name": "Temperature",
+        "group": "75c8cc1919f5db68",
+        "order": 1,
+        "width": 6,
+        "height": 3,
+        "gtype": "gage",
+        "title": "Temperature",
+        "label": "deg F",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "500",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 830,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "de9aa95dbecc7ccf",
+        "type": "link in",
+        "z": "84c93d7c7867d6c7",
+        "name": "Temperature",
+        "links": [
+            "420aac392a01857a"
+        ],
+        "x": 250,
+        "y": 220,
+        "wires": [
+            [
+                "21f611728df6d86f",
+                "616042110405171a"
+            ]
+        ],
+        "l": true
+    },
+    {
+        "id": "1b9fb2a75615ef5d",
+        "type": "ui_chart",
+        "z": "84c93d7c7867d6c7",
+        "name": "Control output",
+        "group": "75c8cc1919f5db68",
+        "order": 16,
+        "width": 11,
+        "height": 5,
+        "label": "Control output (percent)",
+        "chartType": "line",
+        "legend": "true",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "Waiting for data",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "100",
+        "removeOlder": 1,
+        "removeOlderPoints": "1000",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "x": 780,
+        "y": 420,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "2c56881e7e8f26ff",
+        "type": "ui_chart",
+        "z": "84c93d7c7867d6c7",
+        "name": "Setpoint and Temperature",
+        "group": "75c8cc1919f5db68",
+        "order": 7,
+        "width": 11,
+        "height": 5,
+        "label": "Setpoint and Temperature (deg F)",
+        "chartType": "line",
+        "legend": "true",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "Waiting for data",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "1000",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "x": 820,
+        "y": 280,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "ee6f81be3e4bfa9d",
+        "type": "ui_button",
+        "z": "84c93d7c7867d6c7",
+        "name": "Clear graphs button",
+        "group": "75c8cc1919f5db68",
+        "order": 24,
+        "width": 3,
+        "height": 1,
+        "passthru": false,
+        "label": "Clear graphs",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "[]",
+        "payloadType": "json",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 280,
+        "y": 280,
+        "wires": [
+            [
+                "1b9fb2a75615ef5d",
+                "2c56881e7e8f26ff"
+            ]
+        ]
+    },
+    {
+        "id": "7e9bdf06118f5c80",
+        "type": "link in",
+        "z": "84c93d7c7867d6c7",
+        "name": "Fan setting from roaster",
+        "links": [
+            "e375b9ab7c0d4f44"
+        ],
+        "x": 290,
+        "y": 420,
+        "wires": [
+            [
+                "1b9fb2a75615ef5d"
+            ]
+        ],
+        "l": true
+    },
+    {
+        "id": "b13727e26dab3c2b",
+        "type": "link out",
+        "z": "0625af20015678ce",
+        "name": "Setpoint",
+        "links": [
+            "96b6f6b7b646b6a8"
+        ],
+        "x": 1040,
+        "y": 80,
+        "wires": [],
+        "l": true
+    },
+    {
+        "id": "96b6f6b7b646b6a8",
+        "type": "link in",
+        "z": "84c93d7c7867d6c7",
+        "name": "Setpoint",
+        "links": [
+            "b13727e26dab3c2b"
+        ],
+        "x": 240,
+        "y": 340,
+        "wires": [
+            [
+                "1ac5c3066f45033d"
+            ]
+        ],
+        "l": true
+    },
+    {
+        "id": "96ed7585261d6790",
+        "type": "link in",
+        "z": "84c93d7c7867d6c7",
+        "name": "Heater setting from roaster",
+        "links": [
+            "8159242c779048f2"
+        ],
+        "x": 290,
+        "y": 480,
+        "wires": [
+            [
+                "324a21c99f93b411",
+                "5a52ca2c8c1e216f"
+            ]
+        ],
+        "l": true
+    },
+    {
+        "id": "324a21c99f93b411",
+        "type": "ui_gauge",
+        "z": "84c93d7c7867d6c7",
+        "name": "Control output",
+        "group": "75c8cc1919f5db68",
+        "order": 2,
+        "width": 6,
+        "height": 3,
+        "gtype": "gage",
+        "title": "Heater",
+        "label": "percent",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 780,
+        "y": 480,
+        "wires": []
+    },
+    {
+        "id": "3acab7c00ae134ff",
+        "type": "function",
+        "z": "84c93d7c7867d6c7",
+        "name": "Convert to setpoint format",
+        "func": "msg.topic = \"setpoint\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 740,
+        "y": 540,
+        "wires": [
+            [
+                "7eeceb89a6fe4c4b"
+            ]
+        ]
+    },
+    {
+        "id": "7d7f600ab66eed02",
+        "type": "inject",
+        "z": "84c93d7c7867d6c7",
+        "name": "Initialize setpoint",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "70",
+        "payloadType": "num",
+        "x": 270,
+        "y": 540,
+        "wires": [
+            [
+                "153ef2a5bdf3fa3d"
+            ]
+        ]
+    },
+    {
+        "id": "153ef2a5bdf3fa3d",
+        "type": "ui_slider",
+        "z": "84c93d7c7867d6c7",
+        "name": "Setpoint",
+        "label": "Setpoint",
+        "tooltip": "",
+        "group": "75c8cc1919f5db68",
+        "order": 4,
+        "width": 6,
+        "height": 1,
+        "passthru": true,
+        "outs": "end",
+        "topic": "topic",
+        "topicType": "msg",
+        "min": "70",
+        "max": "500",
+        "step": "5",
+        "x": 500,
+        "y": 540,
+        "wires": [
+            [
+                "3acab7c00ae134ff"
+            ]
+        ]
+    },
+    {
+        "id": "7eeceb89a6fe4c4b",
+        "type": "link out",
+        "z": "84c93d7c7867d6c7",
+        "name": "Setpoint setting",
+        "links": [
+            "a6d7a26e2d91a06b"
+        ],
+        "x": 980,
+        "y": 540,
+        "wires": [],
+        "l": true
+    },
+    {
+        "id": "a6d7a26e2d91a06b",
+        "type": "link in",
+        "z": "0625af20015678ce",
+        "name": "Setpoint setting",
+        "links": [
+            "7eeceb89a6fe4c4b"
+        ],
+        "x": 200,
+        "y": 180,
+        "wires": [
+            [
+                "37ae0ebe78a6614d"
+            ]
+        ],
+        "l": true
+    },
+    {
+        "id": "8ef21c14b69b3a83",
+        "type": "ui_text",
+        "z": "84c93d7c7867d6c7",
+        "group": "75c8cc1919f5db68",
+        "order": 6,
+        "width": 2,
+        "height": 1,
+        "name": "Manual/Auto state",
+        "label": "",
+        "format": "{{msg.payload}}",
+        "layout": "row-left",
+        "x": 570,
+        "y": 620,
+        "wires": []
+    },
+    {
+        "id": "751398db97668d30",
+        "type": "link in",
+        "z": "84c93d7c7867d6c7",
+        "name": "Manual/Auto state from roaster",
+        "links": [
+            "324df6f8d219c9ba"
+        ],
+        "x": 310,
+        "y": 620,
+        "wires": [
+            [
+                "8ef21c14b69b3a83"
+            ]
+        ],
+        "l": true
+    },
+    {
+        "id": "e6fcaf995045eedc",
+        "type": "link out",
+        "z": "0625af20015678ce",
+        "name": "Proportional",
+        "links": [
+            "81186155e9b93fc3"
+        ],
+        "x": 1050,
+        "y": 320,
+        "wires": [],
+        "l": true
+    },
+    {
+        "id": "eeb3bba27070a060",
+        "type": "ui_gauge",
+        "z": "84c93d7c7867d6c7",
+        "name": "Proportional",
+        "group": "75c8cc1919f5db68",
+        "order": 11,
+        "width": 6,
+        "height": 3,
+        "gtype": "gage",
+        "title": "Proportional",
+        "label": "",
+        "format": "{{value}}",
+        "min": "-100",
+        "max": "100",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 490,
+        "y": 700,
+        "wires": []
+    },
+    {
+        "id": "81186155e9b93fc3",
+        "type": "link in",
+        "z": "84c93d7c7867d6c7",
+        "name": "Proportional",
+        "links": [
+            "e6fcaf995045eedc"
+        ],
+        "x": 250,
+        "y": 700,
+        "wires": [
+            [
+                "eeb3bba27070a060"
+            ]
+        ],
+        "l": true
+    },
+    {
+        "id": "2f62a49c1e2a375c",
+        "type": "link out",
+        "z": "0625af20015678ce",
+        "name": "Integral",
+        "links": [
+            "dfd98552851d0aed"
+        ],
+        "x": 1040,
+        "y": 380,
+        "wires": [],
+        "l": true
+    },
+    {
+        "id": "dfd98552851d0aed",
+        "type": "link in",
+        "z": "84c93d7c7867d6c7",
+        "name": "Integral",
+        "links": [
+            "2f62a49c1e2a375c"
+        ],
+        "x": 230,
+        "y": 760,
+        "wires": [
+            [
+                "5824be5e7456934f"
+            ]
+        ],
+        "l": true
+    },
+    {
+        "id": "5824be5e7456934f",
+        "type": "ui_gauge",
+        "z": "84c93d7c7867d6c7",
+        "name": "Integral",
+        "group": "75c8cc1919f5db68",
+        "order": 15,
+        "width": 6,
+        "height": 3,
+        "gtype": "gage",
+        "title": "Integral",
+        "label": "",
+        "format": "{{value}}",
+        "min": "-100",
+        "max": "100",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 480,
+        "y": 760,
+        "wires": []
+    },
+    {
+        "id": "d86fa13a7e81ea37",
+        "type": "link out",
+        "z": "0625af20015678ce",
+        "name": "Derivative",
+        "links": [
+            "8dbda1a9ec047313"
+        ],
+        "x": 1040,
+        "y": 440,
+        "wires": [],
+        "l": true
+    },
+    {
+        "id": "8dbda1a9ec047313",
+        "type": "link in",
+        "z": "84c93d7c7867d6c7",
+        "name": "Derivative",
+        "links": [
+            "d86fa13a7e81ea37"
+        ],
+        "x": 240,
+        "y": 820,
+        "wires": [
+            [
+                "86436ff5ebd0d57a"
+            ]
+        ],
+        "l": true
+    },
+    {
+        "id": "86436ff5ebd0d57a",
+        "type": "ui_gauge",
+        "z": "84c93d7c7867d6c7",
+        "name": "Derivative",
+        "group": "75c8cc1919f5db68",
+        "order": 20,
+        "width": 6,
+        "height": 3,
+        "gtype": "gage",
+        "title": "Derivative",
+        "label": "",
+        "format": "{{value}}",
+        "min": "-100",
+        "max": "100",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 480,
+        "y": 820,
+        "wires": []
+    },
+    {
+        "id": "1ac5c3066f45033d",
+        "type": "subflow:eae5d0f8246cac51",
+        "z": "84c93d7c7867d6c7",
+        "name": "",
+        "x": 560,
+        "y": 300,
+        "wires": [
+            [
+                "2c56881e7e8f26ff"
+            ]
+        ]
+    },
+    {
+        "id": "616042110405171a",
+        "type": "subflow:eae5d0f8246cac51",
+        "z": "84c93d7c7867d6c7",
+        "name": "",
+        "x": 560,
+        "y": 260,
+        "wires": [
+            [
+                "2c56881e7e8f26ff"
+            ]
+        ]
+    },
+    {
+        "id": "53a6aea13f8eaf34",
+        "type": "link in",
+        "z": "0625af20015678ce",
+        "name": "Enable/Disable PID control",
+        "links": [
+            "d2478c323769c186"
+        ],
+        "x": 230,
+        "y": 120,
+        "wires": [
+            [
+                "37ae0ebe78a6614d"
+            ]
+        ],
+        "l": true
+    },
+    {
+        "id": "2346101a98103d6f",
+        "type": "ui_text",
+        "z": "225e7b059e1c99bf",
+        "group": "3f1ad68c33459cd7",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "name": "Manual/Auto State",
+        "label": "State",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "x": 530,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "7a795788c8f90a12",
+        "type": "link in",
+        "z": "225e7b059e1c99bf",
+        "name": "Manual/Auto state from roaster",
+        "links": [
+            "324df6f8d219c9ba"
+        ],
+        "x": 290,
+        "y": 100,
+        "wires": [
+            [
+                "2346101a98103d6f"
+            ]
+        ],
+        "l": true
+    },
+    {
+        "id": "8159242c779048f2",
+        "type": "link out",
+        "z": "cd92e76e571d7df9",
+        "name": "Heater setting from roaster",
+        "links": [
+            "97536e6e4247b002",
+            "96ed7585261d6790",
+            "7478a5f279a91054"
+        ],
+        "x": 880,
+        "y": 180,
+        "wires": [],
+        "l": true
+    },
+    {
+        "id": "e61b2d49e3cccd26",
+        "type": "ui_gauge",
+        "z": "225e7b059e1c99bf",
+        "name": "Heater Setting",
+        "group": "cf2399f4fbeaac53",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Heater",
+        "label": "percent",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 520,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "97536e6e4247b002",
+        "type": "link in",
+        "z": "225e7b059e1c99bf",
+        "name": "Heater setting from roaster",
+        "links": [
+            "8159242c779048f2"
+        ],
+        "x": 270,
+        "y": 160,
+        "wires": [
+            [
+                "e61b2d49e3cccd26"
+            ]
+        ],
+        "l": true
+    },
+    {
+        "id": "d6eccf81da2b5820",
+        "type": "link in",
+        "z": "225e7b059e1c99bf",
+        "name": "Fan setting from roaster",
+        "links": [
+            "e375b9ab7c0d4f44"
+        ],
+        "x": 270,
+        "y": 220,
+        "wires": [
+            [
+                "eb0c68de61646543"
+            ]
+        ],
+        "l": true
+    },
+    {
+        "id": "eb0c68de61646543",
+        "type": "ui_gauge",
+        "z": "225e7b059e1c99bf",
+        "name": "Fan Setting",
+        "group": "cf2399f4fbeaac53",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Fan",
+        "label": "percent",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 510,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "cabbb4ee169bcf70",
+        "type": "ui_gauge",
+        "z": "225e7b059e1c99bf",
+        "name": "Temp Gauge",
+        "group": "8e52b23debbd3419",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Temperature",
+        "label": "deg F",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "500",
+        "colors": [
+            "#0036b3",
+            "#00e663",
+            "#ca3838"
+        ],
+        "seg1": "200",
+        "seg2": "400",
+        "x": 510,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "e77eb8fb524f86bb",
+        "type": "link in",
+        "z": "225e7b059e1c99bf",
+        "name": "Temperature",
+        "links": [
+            "420aac392a01857a"
+        ],
+        "x": 230,
+        "y": 280,
+        "wires": [
+            [
+                "cabbb4ee169bcf70"
+            ]
+        ],
+        "l": true
+    },
+    {
+        "id": "2e8c34f07adcfb0b",
+        "type": "link in",
+        "z": "6510951e07e95904",
+        "name": "Auto/Manual commands",
+        "links": [
+            "37f50b1ea97b171a"
+        ],
+        "x": 310,
+        "y": 140,
+        "wires": [
+            [
+                "c95b379bb4361548"
+            ]
+        ],
+        "l": true
+    },
+    {
+        "id": "667e96ccba4a6899",
+        "type": "ui_button",
+        "z": "225e7b059e1c99bf",
+        "name": "Manual button",
+        "group": "3f1ad68c33459cd7",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Manual",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": ":>M/",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 520,
+        "y": 420,
+        "wires": [
+            [
+                "37f50b1ea97b171a"
+            ]
+        ]
+    },
+    {
+        "id": "06a21065dc6ef5ab",
+        "type": "ui_button",
+        "z": "225e7b059e1c99bf",
+        "name": "Auto button",
+        "group": "3f1ad68c33459cd7",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "label": "Auto",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": ":>C/",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 510,
+        "y": 360,
+        "wires": [
+            [
+                "37f50b1ea97b171a"
+            ]
+        ]
+    },
+    {
+        "id": "c9b6629ec3cc8c8d",
+        "type": "link in",
+        "z": "225e7b059e1c99bf",
+        "name": "Enable/Disable PID control",
+        "links": [
+            "d2478c323769c186"
+        ],
+        "x": 270,
+        "y": 360,
+        "wires": [
+            [
+                "06a21065dc6ef5ab"
+            ]
+        ],
+        "l": true,
+        "info": "When the enable/disable switch is changed on the PID UI tab, send a button push to put the roaster in Auto (computer controlled) mode to allow the PID control to change the roaster settings."
+    },
+    {
+        "id": "37f50b1ea97b171a",
+        "type": "link out",
+        "z": "225e7b059e1c99bf",
+        "name": "Auto/Manual commands",
+        "links": [
+            "2e8c34f07adcfb0b"
+        ],
+        "x": 780,
+        "y": 400,
+        "wires": [],
+        "l": true
+    },
+    {
+        "id": "d3322e0d861c8c84",
+        "type": "ui_slider",
+        "z": "225e7b059e1c99bf",
+        "name": "Heater control",
+        "label": "Heater",
+        "tooltip": "",
+        "group": "cf2399f4fbeaac53",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "outs": "end",
+        "topic": "Heater",
+        "topicType": "str",
+        "min": 0,
+        "max": "100",
+        "step": 1,
+        "x": 520,
+        "y": 480,
+        "wires": [
+            [
+                "23a099aeb4dec8c4"
+            ]
+        ]
+    },
+    {
+        "id": "744fee50edffef45",
+        "type": "ui_slider",
+        "z": "225e7b059e1c99bf",
+        "name": "Fan control",
+        "label": "Fan",
+        "tooltip": "",
+        "group": "cf2399f4fbeaac53",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "outs": "end",
+        "topic": "Fan",
+        "topicType": "str",
+        "min": 0,
+        "max": "100",
+        "step": 1,
+        "x": 510,
+        "y": 540,
+        "wires": [
+            [
+                "dac3049ffdcce49b"
+            ]
+        ]
+    },
+    {
+        "id": "dac3049ffdcce49b",
+        "type": "link out",
+        "z": "225e7b059e1c99bf",
+        "name": "Fan setting",
+        "links": [
+            "0765c15a33a02078"
+        ],
+        "x": 750,
+        "y": 540,
+        "wires": [],
+        "l": true
+    },
+    {
+        "id": "23a099aeb4dec8c4",
+        "type": "link out",
+        "z": "225e7b059e1c99bf",
+        "name": "Heater setting",
+        "links": [
+            "04a8b4bbacd10d03"
+        ],
+        "x": 760,
+        "y": 480,
+        "wires": [],
+        "l": true
+    },
+    {
+        "id": "5a52ca2c8c1e216f",
+        "type": "subflow:eae5d0f8246cac51",
+        "z": "84c93d7c7867d6c7",
+        "name": "",
+        "x": 560,
+        "y": 440,
+        "wires": [
+            [
+                "1b9fb2a75615ef5d"
+            ]
+        ]
+    },
+    {
+        "id": "13137449574042f0",
+        "type": "ui_ui_control",
+        "z": "68ed597e2c434a88",
+        "name": "",
+        "events": "all",
+        "x": 340,
+        "y": 160,
+        "wires": [
+            [
+                "033ad45fb8395aa3"
+            ]
+        ]
+    },
+    {
+        "id": "033ad45fb8395aa3",
+        "type": "function",
+        "z": "68ed597e2c434a88",
+        "name": "Save current UI tab id",
+        "func": "if (msg.payload == \"change\")\n{\n    global.set('ui_tab', msg.tab);\n    node.status({fill:\"green\", shape:\"dot\", text:\"Tab \"+msg.tab});\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 580,
+        "y": 160,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "fe8b2bc4ff193159",
+        "type": "inject",
+        "z": "68ed597e2c434a88",
+        "name": "Initialize UI tab",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "0",
+        "payloadType": "num",
+        "x": 150,
+        "y": 160,
+        "wires": [
+            [
+                "13137449574042f0"
+            ]
+        ]
+    },
+    {
+        "id": "eac9effba9d5642b",
+        "type": "switch",
+        "z": "0625af20015678ce",
+        "name": "Pass through only if on PID UI tab",
+        "property": "ui_tab",
+        "propertyType": "global",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "num"
+            }
+        ],
+        "checkall": "false",
+        "repair": false,
+        "outputs": 1,
+        "x": 1000,
+        "y": 200,
+        "wires": [
+            [
+                "47c25550d6e0fcf1"
+            ]
+        ]
+    },
+    {
+        "id": "7478a5f279a91054",
+        "type": "link in",
+        "z": "225e7b059e1c99bf",
+        "name": "Heater setting from roaster",
+        "links": [
+            "8159242c779048f2"
+        ],
+        "x": 250,
+        "y": 480,
+        "wires": [
+            [
+                "d3322e0d861c8c84"
+            ]
+        ],
+        "l": true
+    },
+    {
+        "id": "386cb4d907afe984",
+        "type": "link in",
+        "z": "225e7b059e1c99bf",
+        "name": "Fan setting from roaster",
+        "links": [
+            "e375b9ab7c0d4f44"
+        ],
+        "x": 250,
+        "y": 540,
+        "wires": [
+            [
+                "744fee50edffef45"
+            ]
+        ],
+        "l": true
+    },
+    {
+        "id": "63ca7b5b3d840cea",
+        "type": "link in",
+        "z": "84c93d7c7867d6c7",
+        "name": "Fan setting from roaster",
+        "links": [
+            "e375b9ab7c0d4f44"
+        ],
+        "x": 290,
+        "y": 60,
+        "wires": [
+            [
+                "1b18d3aa07f5a260"
+            ]
+        ],
+        "l": true
+    },
+    {
+        "id": "8d958c7bac69f59f",
+        "type": "status",
+        "z": "0625af20015678ce",
+        "name": "PID status",
+        "scope": [
+            "37ae0ebe78a6614d"
+        ],
+        "x": 540,
+        "y": 520,
+        "wires": [
+            [
+                "f9f1346c09fcce1d"
+            ]
+        ]
+    },
+    {
+        "id": "f9f1346c09fcce1d",
+        "type": "function",
+        "z": "0625af20015678ce",
+        "name": "Extract PID enable status",
+        "func": "node_status = msg.status.text;\nnode_color = msg.status.fill;\nif(node_color == undefined)\n{\n    return [null, null];\n}\n\nif(node_status == undefined)\n{   /* status is blank when temp is in the proportional band */\n    node_status = \"In The Zone\";\n}\n\nif(node_color == \"green\")\n{ /* node enabled and all ok */\n    output = 1;\n}\nelse\n{   /* node disabled or error status */\n    output = 0;\n}\n\nmsg.payload = output;\nmsg.topic = \"PID_status\";\nvar msg_text = {payload:node_status, topic:\"PID_status_text\"};\nreturn [msg, msg_text];",
+        "outputs": 2,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 810,
+        "y": 520,
+        "wires": [
+            [
+                "730b65d89ff909df"
+            ],
+            [
+                "b8619babb4788aac"
+            ]
+        ]
+    },
+    {
+        "id": "730b65d89ff909df",
+        "type": "link out",
+        "z": "0625af20015678ce",
+        "name": "PID Enable Status",
+        "links": [
+            "47114d0ae9e8c0a3"
+        ],
+        "x": 1070,
+        "y": 500,
+        "wires": [],
+        "l": true
+    },
+    {
+        "id": "47114d0ae9e8c0a3",
+        "type": "link in",
+        "z": "84c93d7c7867d6c7",
+        "name": "PID Enable Status",
+        "links": [
+            "730b65d89ff909df"
+        ],
+        "x": 270,
+        "y": 120,
+        "wires": [
+            [
+                "db186a6a99dfe26b"
+            ]
+        ],
+        "l": true
+    },
+    {
+        "id": "67b7b48fa487db4e",
+        "type": "function",
+        "z": "0625af20015678ce",
+        "name": "Safety check temperature reading",
+        "func": "/* \n * Intended to detect shorting or disconnection of the \n * thermocouple. This is to prevent the PID loop from \n * going into full heat due to a misreading thermocouple.\n */\n temperature = msg.payload;\n if (temperature < 40)\n {\n     count = context.get(\"OutOfRangeCount\");\n     if (count++ > 10) \n     { /* if temp has been out of range 10 times in a row */\n        /* send a disable message to the PID loop */\n        msg.topic = \"enable\";\n        msg.payload = 0;\n        return msg;\n     }\n     context.set(\"OutOfRangeCount\", count);\n }\n else\n { /* temperature ok */\n    context.set(\"OutOfRangeCount\", 0);\n }\nreturn null;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "// Code added here will be run once\n// whenever the node is started.\ncontext.set('OutOfRangeCount', 0);",
+        "finalize": "",
+        "libs": [],
+        "x": 420,
+        "y": 280,
+        "wires": [
+            [
+                "19a3cb87fc2c8e28",
+                "37ae0ebe78a6614d"
+            ]
+        ]
+    },
+    {
+        "id": "19a3cb87fc2c8e28",
+        "type": "ui_toast",
+        "z": "0625af20015678ce",
+        "position": "dialog",
+        "displayTime": "3",
+        "highlight": "",
+        "sendall": true,
+        "outputs": 1,
+        "ok": "OK",
+        "cancel": "",
+        "raw": false,
+        "topic": "Problem with thermocouple - control disabled",
+        "name": "Indicate safety trigger",
+        "x": 510,
+        "y": 360,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "b8619babb4788aac",
+        "type": "link out",
+        "z": "0625af20015678ce",
+        "name": "PID Status Text",
+        "links": [
+            "2cb5682cd512904e"
+        ],
+        "x": 1060,
+        "y": 560,
+        "wires": [],
+        "l": true
+    },
+    {
+        "id": "2cb5682cd512904e",
+        "type": "link in",
+        "z": "84c93d7c7867d6c7",
+        "name": "PID Status Text",
+        "links": [
+            "b8619babb4788aac"
+        ],
+        "x": 260,
+        "y": 180,
+        "wires": [
+            [
+                "de8c3d325dfc4a63"
+            ]
+        ],
+        "l": true
+    },
+    {
+        "id": "de8c3d325dfc4a63",
+        "type": "ui_text",
+        "z": "84c93d7c7867d6c7",
+        "group": "75c8cc1919f5db68",
+        "order": 9,
+        "width": 6,
+        "height": 1,
+        "name": "PID Status",
+        "label": "",
+        "format": "{{msg.payload}}",
+        "layout": "row-center",
+        "x": 510,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "99f748e9b86d1efb",
+        "type": "ui_text",
+        "z": "fe8e62537f119f1d",
+        "group": "69c704d3b69f3fd5",
+        "order": 1,
+        "width": "6",
+        "height": "1",
+        "name": "Timer display",
+        "label": "",
+        "format": "<font size=8>{{msg.payload}}</font>",
+        "layout": "row-center",
+        "x": 830,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "8506765f9aea6d92",
+        "type": "ui_button",
+        "z": "fe8e62537f119f1d",
+        "name": "Start button",
+        "group": "69c704d3b69f3fd5",
+        "order": 2,
+        "width": 3,
+        "height": 1,
+        "passthru": false,
+        "label": "Start",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "start",
+        "topicType": "str",
+        "x": 350,
+        "y": 160,
+        "wires": [
+            [
+                "478702180c3ea072"
+            ]
+        ]
+    },
+    {
+        "id": "9d337d154b737c11",
+        "type": "ui_button",
+        "z": "fe8e62537f119f1d",
+        "name": "Stop/Reset button",
+        "group": "69c704d3b69f3fd5",
+        "order": 3,
+        "width": 3,
+        "height": 1,
+        "passthru": false,
+        "label": "Stop/Reset",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "stop",
+        "topicType": "str",
+        "x": 330,
+        "y": 220,
+        "wires": [
+            [
+                "478702180c3ea072"
+            ]
+        ]
+    },
+    {
+        "id": "478702180c3ea072",
+        "type": "function",
+        "z": "fe8e62537f119f1d",
+        "name": "Timer",
+        "func": "h = context.get('hours');\nm = context.get('minutes');\ns = context.get('seconds');\non = context.get('running');\nif(on)\n{\n    if(msg.topic == \"tick\")\n    {\n        s += 1;\n        if(s > 59)\n        {\n            s = 0;\n            m += 1;\n        }\n        if(m > 59)\n        {\n            m = 0;\n            h += 1;\n        }\n    }\n}\nif(msg.topic == \"start\")\n{\n    context.set('running', true);\n}\nif(msg.topic == \"stop\")\n{\n    context.set('running', false);\n    h = 0;\n    m = 0;\n    s = 0;\n}\ncontext.set('hours', h);\ncontext.set('minutes', m);\ncontext.set('seconds', s);\n\n/* format the timer string */\nh = h.toString();\nm = m.toString();\ns = s.toString();\n/* add leading zeros if needed */\nif(h.length < 2) h = \"0\" + h;\nif(m.length < 2) m = \"0\" + m;\nif(s.length < 2) s = \"0\" + s;\n/* pass the final string in the message payload */\nmsg.payload = h + \":\" + m + \":\" + s;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "// Code added here will be run once\n// whenever the node is started.\ncontext.set('hours', 0);\ncontext.set('minutes', 0);\ncontext.set('seconds', 0);\ncontext.set('running', false)",
+        "finalize": "",
+        "libs": [],
+        "x": 620,
+        "y": 180,
+        "wires": [
+            [
+                "99f748e9b86d1efb"
+            ]
+        ]
+    },
+    {
+        "id": "0acbcd079b5a8ed8",
+        "type": "inject",
+        "z": "fe8e62537f119f1d",
+        "name": "Every second",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "1",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "tick",
+        "payloadType": "date",
+        "x": 340,
+        "y": 80,
+        "wires": [
+            [
+                "478702180c3ea072"
+            ]
+        ]
+    },
+    {
+        "id": "7ea4f9195042949c",
+        "type": "serial in",
+        "z": "cd92e76e571d7df9",
+        "name": "From Coffee Roaster",
+        "serial": "bd7809fd2311508d",
+        "x": 120,
+        "y": 140,
+        "wires": [
+            [
+                "ce95e86e652b82f6"
+            ]
+        ]
+    },
+    {
+        "id": "50af048dcef60ad9",
+        "type": "moving-average",
+        "z": "cd92e76e571d7df9",
+        "name": "Filter",
+        "amount": "5",
+        "weight": "cumulative",
+        "x": 970,
+        "y": 60,
+        "wires": [
+            [
+                "337c90984e04038a"
+            ]
+        ]
+    },
+    {
+        "id": "37ae0ebe78a6614d",
+        "type": "PID",
+        "z": "0625af20015678ce",
+        "name": "PID control",
+        "setpoint": "70",
+        "pb": "50",
+        "ti": "180",
+        "td": "240",
+        "integral_default": "0.5",
+        "smooth_factor": "3",
+        "max_interval": "30",
+        "enable": 1,
+        "disabled_op": 0,
+        "x": 510,
+        "y": 160,
+        "wires": [
+            [
+                "ce56903c58e200e6",
+                "5aad7929c55ba36d",
+                "17d92ce79bd66528",
+                "f45542f0a4a35cab",
+                "f2528cee9a6ff4f3"
+            ]
+        ]
+    },
+    {
+        "id": "c95b379bb4361548",
+        "type": "serial out",
+        "z": "6510951e07e95904",
+        "name": "To Coffee Roaster",
+        "serial": "bd7809fd2311508d",
+        "x": 710,
+        "y": 260,
+        "wires": []
+    }
+]
