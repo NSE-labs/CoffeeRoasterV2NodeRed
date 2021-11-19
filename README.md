@@ -5,5 +5,4 @@ Coffee roaster interface
 
 ### About
 
-This is your project's README.md file. It helps users understand what your
-project does, how to use it and anything else they may need to know.
+This project uses an Arduino board with additional circuitry to control the fan and heater in a Quest coffee roaster. The Arduino then communicates via USB serial to a Raspberry Pi running Node Red which supplies the graphical user interface.
