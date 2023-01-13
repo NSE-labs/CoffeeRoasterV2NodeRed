@@ -1,8 +1,8 @@
 
-=============
-# Coffee Roaster V2
+# Coffee Roaster V2 Node Red 
 
-This project is a redesign of the coffee roaster controls that were implemented over a decade ago. In that previous design, the low level control circuits were installed within the coffee roaster itself. Years of operation in the elevated temperatures combined with dust from the roasting process have made maintenance of the circuits difficult at best, not to mention the tight fit of these circuits within the roaster.
-
-For more information, check out the Documentation directory of this project.
+This is the Node Red code for the Coffee Roaster V2 project. 
+It resides in a separate Git repository from the Arduino code and project documentation, so I had to put it in this separate Github project.
+This was done to facilitate using the project facilities of Node Red to manage the source code through Git/Github.
+Please refer to the CoffeeRoasterV2 repository for documentation on this project.
 
