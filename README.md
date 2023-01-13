@@ -1,8 +1,8 @@
-CoffeeRoaster
+
 =============
+# Coffee Roaster V2
 
-Coffee roaster interface
+This project is a redesign of the coffee roaster controls that were implemented over a decade ago. In that previous design, the low level control circuits were installed within the coffee roaster itself. Years of operation in the elevated temperatures combined with dust from the roasting process have made maintenance of the circuits difficult at best, not to mention the tight fit of these circuits within the roaster.
 
-### About
+For more information, check out the Documentation directory of this project.
 
-This project uses an Arduino board with additional circuitry to control the fan and heater in a Quest coffee roaster. The Arduino then communicates via USB serial to a Raspberry Pi running Node Red which supplies the graphical user interface.
