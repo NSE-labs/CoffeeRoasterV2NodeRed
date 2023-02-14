@@ -201,27 +201,28 @@
         "tab": "053d3106b7802878",
         "order": 1,
         "disp": true,
-        "width": "4",
+        "width": 4,
         "collapse": false
     },
     {
         "id": "cf2399f4fbeaac53",
         "type": "ui_group",
-        "name": "Heater and Fan",
+        "name": "Heater",
         "tab": "053d3106b7802878",
         "order": 2,
         "disp": true,
-        "width": "6",
-        "collapse": false
+        "width": 4,
+        "collapse": true,
+        "className": ""
     },
     {
         "id": "8e52b23debbd3419",
         "type": "ui_group",
         "name": "Temperature",
         "tab": "053d3106b7802878",
-        "order": 3,
+        "order": 4,
         "disp": true,
-        "width": "6",
+        "width": 4,
         "collapse": false
     },
     {
@@ -367,9 +368,9 @@
         "type": "ui_group",
         "name": "Timer",
         "tab": "053d3106b7802878",
-        "order": 4,
+        "order": 5,
         "disp": true,
-        "width": "6",
+        "width": 6,
         "collapse": false
     },
     {
@@ -430,6 +431,48 @@
         "responsetimeout": "10000"
     },
     {
+        "id": "88317e802ff04bbd",
+        "type": "ui_group",
+        "name": "Fan",
+        "tab": "053d3106b7802878",
+        "order": 3,
+        "disp": true,
+        "width": 4,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "a2760ba31d0a2a1e",
+        "type": "ui_spacer",
+        "z": "225e7b059e1c99bf",
+        "name": "spacer",
+        "group": "3f1ad68c33459cd7",
+        "order": 1,
+        "width": 4,
+        "height": 1
+    },
+    {
+        "id": "c379dac231d6ca0e",
+        "type": "ui_spacer",
+        "z": "225e7b059e1c99bf",
+        "name": "spacer",
+        "group": "8e52b23debbd3419",
+        "order": 1,
+        "width": 4,
+        "height": 1
+    },
+    {
+        "id": "f0a5c9b6a0073ebe",
+        "type": "ui_group",
+        "name": "Drum and Case Fan",
+        "tab": "053d3106b7802878",
+        "order": 6,
+        "disp": false,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
         "id": "7388417d4984619e",
         "type": "function",
         "z": "eae5d0f8246cac51",
@@ -451,7 +494,7 @@
         "type": "function",
         "z": "cd92e76e571d7df9",
         "name": "Decode Temperature",
-        "func": "preamble = msg.payload.substr(0,2);\nif (preamble == \":T\")\n{\n    msg.topic = 'Temperature'\n    temperature = msg.payload.substr(2,6);\n    if (isNaN(temperature))\n    {\n        temperature = 0; /* insert zero if bad number */\n    }\n    msg.payload = temperature;\n    return msg;\n}\nreturn null;",
+        "func": "var preamble = msg.payload.substr(0,2);\nif (preamble == \":T\")\n{\n    msg.topic = 'Temperature'\n    var temperature = msg.payload.substr(2,6);\n    if (isNaN(temperature))\n    {\n        temperature = 0; /* insert zero if bad number */\n    }\n    msg.payload = temperature;\n    return msg;\n}\nreturn null;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -502,7 +545,8 @@
                 "5084e56e3cb6b17b",
                 "20376c4562846c62",
                 "61099d7491a144f0",
-                "3456ea122c4a1206"
+                "3456ea122c4a1206",
+                "3fca88f1eba03f41"
             ]
         ]
     },
@@ -511,7 +555,7 @@
         "type": "function",
         "z": "cd92e76e571d7df9",
         "name": "Decode Manual/Auto",
-        "func": "preamble = msg.payload.substr(0,2);\nmsg.topic = 'Mode';\nif (preamble == \":C\")\n{\n    msg.payload = \"Auto\";\n    return msg;\n}\nelse if (preamble == \":M\")\n{\n    msg.payload = \"Manual\";\n    return msg;\n}\nreturn null;",
+        "func": "var preamble = msg.payload.substr(0,2);\nmsg.topic = 'Mode';\nif (preamble == \":C\")\n{\n    msg.payload = \"Auto\";\n    return msg;\n}\nelse if (preamble == \":M\")\n{\n    msg.payload = \"Manual\";\n    return msg;\n}\nreturn null;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -530,7 +574,7 @@
         "type": "function",
         "z": "cd92e76e571d7df9",
         "name": "Decode Heater Setting",
-        "func": "preamble = msg.payload.substr(0,2);\nif (preamble == \":H\")\n{\n    msg.topic = 'Heater Setting'\n    setting = msg.payload.substr(2,3);\n    msg.payload = setting;\n    global.set('heater', setting)\n    return msg;\n}\nreturn null;",
+        "func": "var preamble = msg.payload.substr(0,2);\nif (preamble == \":H\")\n{\n    msg.topic = 'Heater Setting'\n    var setting = msg.payload.substr(2,3);\n    msg.payload = setting;\n    global.set('heater', setting)\n    return msg;\n}\nreturn null;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -549,7 +593,7 @@
         "type": "function",
         "z": "cd92e76e571d7df9",
         "name": "Decode Fan Setting",
-        "func": "preamble = msg.payload.substr(0,2);\nif (preamble == \":F\")\n{\n    msg.topic = 'Fan Setting'\n    setting = msg.payload.substr(2,3);\n    msg.payload = setting;\n    global.set('fan',setting)\n    return msg;\n}\nreturn null;",
+        "func": "var preamble = msg.payload.substr(0,2);\nif (preamble == \":F\")\n{\n    msg.topic = 'Fan Setting'\n    var setting = msg.payload.substr(2,3);\n    msg.payload = setting;\n    global.set('fan',setting)\n    return msg;\n}\nreturn null;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -671,6 +715,39 @@
                 "ce95e86e652b82f6"
             ]
         ]
+    },
+    {
+        "id": "3fca88f1eba03f41",
+        "type": "function",
+        "z": "cd92e76e571d7df9",
+        "name": "Decode Drum Motor Status",
+        "func": "var preamble = msg.payload.substr(0,2);\nmsg.topic = 'Drum';\nif (preamble == \":+\")\n{\n    msg.payload = \":>+/\"; /* On */\n    return msg;\n}\nelse if (preamble == \":-\")\n{\n    msg.payload = \":>-/\"; /* Off */\n    return msg;\n}\nreturn null;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 640,
+        "y": 300,
+        "wires": [
+            [
+                "7e9fd46f1e4d8990"
+            ]
+        ]
+    },
+    {
+        "id": "7e9fd46f1e4d8990",
+        "type": "link out",
+        "z": "cd92e76e571d7df9",
+        "name": "Drum motor status from roaster",
+        "mode": "link",
+        "links": [
+            "092b83a469203a52"
+        ],
+        "x": 930,
+        "y": 300,
+        "wires": [],
+        "l": true
     },
     {
         "id": "6340baff85161ed4",
@@ -1286,11 +1363,57 @@
         "wires": []
     },
     {
+        "id": "83f13169396af33b",
+        "type": "link in",
+        "z": "6510951e07e95904",
+        "name": "Drum and Fan Commands",
+        "links": [
+            "d409aab11fde37db"
+        ],
+        "x": 310,
+        "y": 80,
+        "wires": [
+            [
+                "c95b379bb4361548"
+            ]
+        ],
+        "l": true
+    },
+    {
+        "id": "33ee2103b9d50034",
+        "type": "inject",
+        "z": "6510951e07e95904",
+        "name": "Request Drum Motor Setting",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "5",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": ":?D/",
+        "payloadType": "str",
+        "x": 330,
+        "y": 440,
+        "wires": [
+            [
+                "c95b379bb4361548"
+            ]
+        ]
+    },
+    {
         "id": "2346101a98103d6f",
         "type": "ui_text",
         "z": "225e7b059e1c99bf",
         "group": "3f1ad68c33459cd7",
-        "order": 1,
+        "order": 2,
         "width": 0,
         "height": 0,
         "name": "Manual/Auto State",
@@ -1324,7 +1447,7 @@
         "z": "225e7b059e1c99bf",
         "name": "Heater Setting",
         "group": "cf2399f4fbeaac53",
-        "order": 1,
+        "order": 2,
         "width": 0,
         "height": 0,
         "gtype": "gage",
@@ -1340,6 +1463,7 @@
         ],
         "seg1": "",
         "seg2": "",
+        "className": "",
         "x": 520,
         "y": 160,
         "wires": []
@@ -1383,8 +1507,8 @@
         "type": "ui_gauge",
         "z": "225e7b059e1c99bf",
         "name": "Fan Setting",
-        "group": "cf2399f4fbeaac53",
-        "order": 3,
+        "group": "88317e802ff04bbd",
+        "order": 2,
         "width": 0,
         "height": 0,
         "gtype": "gage",
@@ -1400,6 +1524,7 @@
         ],
         "seg1": "",
         "seg2": "",
+        "className": "",
         "x": 510,
         "y": 220,
         "wires": []
@@ -1410,7 +1535,7 @@
         "z": "225e7b059e1c99bf",
         "name": "Temp Gauge",
         "group": "8e52b23debbd3419",
-        "order": 1,
+        "order": 2,
         "width": 0,
         "height": 0,
         "gtype": "gage",
@@ -1453,7 +1578,7 @@
         "z": "225e7b059e1c99bf",
         "name": "Manual button",
         "group": "3f1ad68c33459cd7",
-        "order": 2,
+        "order": 3,
         "width": 0,
         "height": 0,
         "passthru": false,
@@ -1480,7 +1605,7 @@
         "z": "225e7b059e1c99bf",
         "name": "Auto button",
         "group": "3f1ad68c33459cd7",
-        "order": 3,
+        "order": 4,
         "width": 0,
         "height": 0,
         "passthru": true,
@@ -1533,40 +1658,14 @@
         "l": true
     },
     {
-        "id": "d3322e0d861c8c84",
-        "type": "ui_slider",
-        "z": "225e7b059e1c99bf",
-        "name": "Heater control",
-        "label": "Heater",
-        "tooltip": "",
-        "group": "cf2399f4fbeaac53",
-        "order": 2,
-        "width": 0,
-        "height": 0,
-        "passthru": false,
-        "outs": "end",
-        "topic": "Heater",
-        "topicType": "str",
-        "min": 0,
-        "max": "100",
-        "step": 1,
-        "x": 520,
-        "y": 480,
-        "wires": [
-            [
-                "23a099aeb4dec8c4"
-            ]
-        ]
-    },
-    {
         "id": "744fee50edffef45",
         "type": "ui_slider",
         "z": "225e7b059e1c99bf",
         "name": "Fan control",
         "label": "Fan",
         "tooltip": "",
-        "group": "cf2399f4fbeaac53",
-        "order": 4,
+        "group": "88317e802ff04bbd",
+        "order": 1,
         "width": 0,
         "height": 0,
         "passthru": false,
@@ -1576,6 +1675,7 @@
         "min": 0,
         "max": "100",
         "step": 1,
+        "className": "",
         "x": 510,
         "y": 540,
         "wires": [
@@ -1643,6 +1743,116 @@
             ]
         ],
         "l": true
+    },
+    {
+        "id": "d3322e0d861c8c84",
+        "type": "ui_slider",
+        "z": "225e7b059e1c99bf",
+        "name": "Heater control",
+        "label": "Heater",
+        "tooltip": "",
+        "group": "cf2399f4fbeaac53",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "outs": "end",
+        "topic": "Heater",
+        "topicType": "str",
+        "min": 0,
+        "max": "100",
+        "step": 1,
+        "className": "",
+        "x": 520,
+        "y": 480,
+        "wires": [
+            [
+                "23a099aeb4dec8c4"
+            ]
+        ]
+    },
+    {
+        "id": "e7ec9c7a27c9fc73",
+        "type": "ui_switch",
+        "z": "225e7b059e1c99bf",
+        "name": "Drum Control",
+        "label": "Drum Motor",
+        "tooltip": "",
+        "group": "f0a5c9b6a0073ebe",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "decouple": "true",
+        "topic": "topic",
+        "topicType": "msg",
+        "style": "",
+        "onvalue": ":>+/",
+        "onvalueType": "str",
+        "onicon": "",
+        "oncolor": "",
+        "offvalue": ":>-/",
+        "offvalueType": "str",
+        "officon": "",
+        "offcolor": "",
+        "animate": false,
+        "className": "",
+        "x": 520,
+        "y": 620,
+        "wires": [
+            [
+                "d409aab11fde37db",
+                "627d80809f046cf0"
+            ]
+        ]
+    },
+    {
+        "id": "d409aab11fde37db",
+        "type": "link out",
+        "z": "225e7b059e1c99bf",
+        "name": "Drum and Fan commands",
+        "mode": "link",
+        "links": [
+            "83f13169396af33b"
+        ],
+        "x": 860,
+        "y": 620,
+        "wires": [],
+        "l": true
+    },
+    {
+        "id": "092b83a469203a52",
+        "type": "link in",
+        "z": "225e7b059e1c99bf",
+        "name": "Drum motor status from roaster",
+        "links": [
+            "7e9fd46f1e4d8990"
+        ],
+        "x": 270,
+        "y": 620,
+        "wires": [
+            [
+                "e7ec9c7a27c9fc73",
+                "627d80809f046cf0"
+            ]
+        ],
+        "l": true
+    },
+    {
+        "id": "627d80809f046cf0",
+        "type": "debug",
+        "z": "225e7b059e1c99bf",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 500,
+        "y": 720,
+        "wires": []
     },
     {
         "id": "9f019c792ed476b4",
@@ -2387,8 +2597,8 @@
         "z": "fe8e62537f119f1d",
         "group": "69c704d3b69f3fd5",
         "order": 1,
-        "width": "6",
-        "height": "1",
+        "width": 6,
+        "height": 1,
         "name": "Timer display",
         "label": "",
         "format": "<font size=8>{{msg.payload}}</font>",
