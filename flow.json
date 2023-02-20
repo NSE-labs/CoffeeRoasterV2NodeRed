@@ -28,9 +28,17 @@
         "info": ""
     },
     {
+        "id": "83cf1951d3799d73",
+        "type": "tab",
+        "label": "UI Temperature Control",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
         "id": "84c93d7c7867d6c7",
         "type": "tab",
-        "label": "UI PID Control",
+        "label": "UI Tuning",
         "disabled": false,
         "info": ""
     },
@@ -228,8 +236,9 @@
     {
         "id": "535c75118a4d1230",
         "type": "ui_tab",
-        "name": "PID Control",
+        "name": "Remote Tuning",
         "icon": "dashboard",
+        "order": 3,
         "disabled": false,
         "hidden": false
     },
@@ -442,7 +451,29 @@
         "className": ""
     },
     {
-        "id": "a2760ba31d0a2a1e",
+        "id": "f0a5c9b6a0073ebe",
+        "type": "ui_group",
+        "name": "Drum motor",
+        "tab": "a39117407ed7c4fe",
+        "order": 3,
+        "disp": false,
+        "width": "3",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "add62a6d08a1bf97",
+        "type": "ui_group",
+        "name": "IP Address",
+        "tab": "053d3106b7802878",
+        "order": 7,
+        "disp": false,
+        "width": "4",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "96a9596997dc8767",
         "type": "ui_spacer",
         "z": "225e7b059e1c99bf",
         "name": "spacer",
@@ -452,7 +483,7 @@
         "height": 1
     },
     {
-        "id": "c379dac231d6ca0e",
+        "id": "a7f8e96062cf4681",
         "type": "ui_spacer",
         "z": "225e7b059e1c99bf",
         "name": "spacer",
@@ -462,13 +493,120 @@
         "height": 1
     },
     {
-        "id": "f0a5c9b6a0073ebe",
+        "id": "a39117407ed7c4fe",
+        "type": "ui_tab",
+        "name": "Temperature Control",
+        "icon": "dashboard",
+        "order": 2,
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "3ea417a6dcc15b38",
         "type": "ui_group",
-        "name": "Drum and Case Fan",
-        "tab": "053d3106b7802878",
+        "name": "Setpoint",
+        "tab": "a39117407ed7c4fe",
         "order": 6,
         "disp": false,
+        "width": "11",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "8366fe1b274cb777",
+        "type": "ui_group",
+        "name": "Fan",
+        "tab": "a39117407ed7c4fe",
+        "order": 5,
+        "disp": false,
+        "width": "7",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "b617090a6afb3fbd",
+        "type": "ui_group",
+        "name": "Temperature control graph",
+        "tab": "a39117407ed7c4fe",
+        "order": 2,
+        "disp": false,
+        "width": "11",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "d400a092d1bcda1c",
+        "type": "ui_group",
+        "name": "Temperature",
+        "tab": "a39117407ed7c4fe",
+        "order": 1,
+        "disp": false,
+        "width": "7",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "23e0daa6a346daf3",
+        "type": "ui_spacer",
+        "z": "83cf1951d3799d73",
+        "name": "spacer",
+        "group": "b617090a6afb3fbd",
+        "order": 3,
+        "width": 8,
+        "height": 1
+    },
+    {
+        "id": "4c0b02b7f235c118",
+        "type": "ui_group",
+        "name": "Enable switch",
+        "tab": "a39117407ed7c4fe",
+        "order": 4,
+        "disp": false,
+        "width": "4",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "e121f5f963aae468",
+        "type": "ui_group",
+        "name": "Heater",
+        "tab": "a39117407ed7c4fe",
+        "order": 8,
+        "disp": false,
+        "width": "3",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "f3efac7133f890d6",
+        "type": "ui_group",
+        "name": "Timer",
+        "tab": "a39117407ed7c4fe",
+        "order": 7,
+        "disp": true,
         "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "0e6370bdfcb56bb1",
+        "type": "ui_group",
+        "name": "Drum motor",
+        "tab": "053d3106b7802878",
+        "order": 7,
+        "disp": false,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "3808bd576c898583",
+        "type": "ui_group",
+        "name": "Heater graph",
+        "tab": "a39117407ed7c4fe",
+        "order": 9,
+        "disp": false,
+        "width": "9",
         "collapse": false,
         "className": ""
     },
@@ -477,7 +615,7 @@
         "type": "function",
         "z": "eae5d0f8246cac51",
         "name": "Decimate",
-        "func": "c = context.get('count');\nc += 1;\ncontext.set('count', c)\nif (c > 9)\n{\n    context.set('count', 0)\n    return msg;\n}\nreturn null;",
+        "func": "var c = context.get('count');\nc += 1;\ncontext.set('count', c)\nif (c > 9)\n{\n    context.set('count', 0)\n    return msg;\n}\nreturn null;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "// Code added here will be run once\n// whenever the node is started.\ncontext.set('count', 0)",
@@ -615,7 +753,8 @@
         "links": [
             "6340baff85161ed4",
             "de9aa95dbecc7ccf",
-            "e77eb8fb524f86bb"
+            "e77eb8fb524f86bb",
+            "3c9936c7122f6423"
         ],
         "x": 1290,
         "y": 60,
@@ -632,7 +771,8 @@
             "7e9bdf06118f5c80",
             "d6eccf81da2b5820",
             "386cb4d907afe984",
-            "63ca7b5b3d840cea"
+            "63ca7b5b3d840cea",
+            "0c2a431b2e340e18"
         ],
         "x": 870,
         "y": 240,
@@ -680,7 +820,8 @@
         "links": [
             "97536e6e4247b002",
             "96ed7585261d6790",
-            "7478a5f279a91054"
+            "7478a5f279a91054",
+            "0f81bcc3746619ea"
         ],
         "x": 880,
         "y": 180,
@@ -742,7 +883,8 @@
         "name": "Drum motor status from roaster",
         "mode": "link",
         "links": [
-            "092b83a469203a52"
+            "092b83a469203a52",
+            "594802a3876166f3"
         ],
         "x": 930,
         "y": 300,
@@ -762,7 +904,7 @@
         "wires": [
             [
                 "67b7b48fa487db4e",
-                "37ae0ebe78a6614d"
+                "95159637cac57b77"
             ]
         ],
         "l": true
@@ -848,7 +990,7 @@
         "type": "function",
         "z": "0625af20015678ce",
         "name": "Extract setpoint",
-        "func": "sp = msg.setpoint;\nmsg.payload = sp;\nmsg.topic = \"Setpoint\";\nreturn msg;",
+        "func": "var sp = msg.setpoint;\nmsg.payload = sp;\nmsg.topic = \"Target\";\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -929,7 +1071,8 @@
         "z": "0625af20015678ce",
         "name": "Setpoint",
         "links": [
-            "96b6f6b7b646b6a8"
+            "96b6f6b7b646b6a8",
+            "3faa1700a5c5e485"
         ],
         "x": 1040,
         "y": 80,
@@ -942,7 +1085,8 @@
         "z": "0625af20015678ce",
         "name": "Setpoint setting",
         "links": [
-            "7eeceb89a6fe4c4b"
+            "7eeceb89a6fe4c4b",
+            "f05a246d6a7e8132"
         ],
         "x": 200,
         "y": 180,
@@ -998,7 +1142,8 @@
         "z": "0625af20015678ce",
         "name": "Enable/Disable PID control",
         "links": [
-            "d2478c323769c186"
+            "d2478c323769c186",
+            "e3747c3c1ebb1790"
         ],
         "x": 230,
         "y": 120,
@@ -1013,7 +1158,7 @@
         "id": "eac9effba9d5642b",
         "type": "switch",
         "z": "0625af20015678ce",
-        "name": "Pass through only if on PID UI tab",
+        "name": "Pass through only if on control UI tab",
         "property": "ui_tab",
         "propertyType": "global",
         "rules": [
@@ -1021,17 +1166,23 @@
                 "t": "eq",
                 "v": "1",
                 "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "2",
+                "vt": "num"
             }
         ],
         "checkall": "false",
         "repair": false,
-        "outputs": 1,
-        "x": 1000,
+        "outputs": 2,
+        "x": 1010,
         "y": 200,
         "wires": [
             [
                 "47c25550d6e0fcf1"
-            ]
+            ],
+            []
         ]
     },
     {
@@ -1078,7 +1229,8 @@
         "z": "0625af20015678ce",
         "name": "PID Enable Status",
         "links": [
-            "47114d0ae9e8c0a3"
+            "47114d0ae9e8c0a3",
+            "9342c87b8fdbbc90"
         ],
         "x": 1070,
         "y": 500,
@@ -1090,14 +1242,14 @@
         "type": "function",
         "z": "0625af20015678ce",
         "name": "Safety check temperature reading",
-        "func": "/* \n * Intended to detect shorting or disconnection of the \n * thermocouple. This is to prevent the PID loop from \n * going into full heat due to a misreading thermocouple.\n */\n temperature = msg.payload;\n if (temperature < 40)\n {\n     count = context.get(\"OutOfRangeCount\");\n     if (count++ > 10) \n     { /* if temp has been out of range 10 times in a row */\n        /* send a disable message to the PID loop */\n        msg.topic = \"enable\";\n        msg.payload = 0;\n        return msg;\n     }\n     context.set(\"OutOfRangeCount\", count);\n }\n else\n { /* temperature ok */\n    context.set(\"OutOfRangeCount\", 0);\n }\nreturn null;",
+        "func": "/* \n * Intended to detect shorting or disconnection of the \n * thermocouple. This is to prevent the PID loop from \n * going into full heat due to a misreading thermocouple.\n */\n var temperature = msg.payload;\n if (temperature < 40)\n {\n     var count = context.get(\"OutOfRangeCount\");\n     if (count++ > 10) \n     { /* if temp has been out of range 10 times in a row */\n        /* send a disable message to the PID loop */\n        msg.topic = \"enable\";\n        msg.payload = 0;\n        return msg;\n     }\n     context.set(\"OutOfRangeCount\", count);\n }\n else\n { /* temperature ok */\n    context.set(\"OutOfRangeCount\", 0);\n }\nreturn null;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "// Code added here will be run once\n// whenever the node is started.\ncontext.set('OutOfRangeCount', 0);",
         "finalize": "",
         "libs": [],
         "x": 420,
-        "y": 280,
+        "y": 360,
         "wires": [
             [
                 "19a3cb87fc2c8e28",
@@ -1119,8 +1271,8 @@
         "raw": false,
         "topic": "Problem with thermocouple - control disabled",
         "name": "Indicate safety trigger",
-        "x": 510,
-        "y": 360,
+        "x": 540,
+        "y": 440,
         "wires": [
             []
         ]
@@ -1144,10 +1296,10 @@
         "z": "0625af20015678ce",
         "name": "PID control",
         "setpoint": "70",
-        "pb": "50",
-        "ti": "180",
-        "td": "240",
-        "integral_default": "0.5",
+        "pb": "400",
+        "ti": "3600",
+        "td": "0",
+        "integral_default": "0.3",
         "smooth_factor": "3",
         "max_interval": "30",
         "enable": 1,
@@ -1161,6 +1313,25 @@
                 "17d92ce79bd66528",
                 "f45542f0a4a35cab",
                 "f2528cee9a6ff4f3"
+            ]
+        ]
+    },
+    {
+        "id": "95159637cac57b77",
+        "type": "function",
+        "z": "0625af20015678ce",
+        "name": "Average Temperature",
+        "func": "var temperature = msg.payload;\nvar sendMessage = false;\nvar average = flow.get('temperature_average');\nif(!average) average = 0;\nvar count = flow.get('temperature_count');\nif(!count) count = 0;\naverage += temperature;\ncount++;\nif(count >= 10)\n{ \n    average = average/10;\n    msg.payload = average;\n    count = 0;\n    average = 0;\n    sendMessage = true;\n}\nflow.set('temperature_average', average);\nflow.set('temperature_count', count);\nif(sendMessage == true)\n{\n    return msg;     \n}\nelse\n{\n    return null;\n}\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 380,
+        "y": 280,
+        "wires": [
+            [
+                "37ae0ebe78a6614d"
             ]
         ]
     },
@@ -1324,7 +1495,8 @@
         "name": "Fan setting",
         "links": [
             "9f019c792ed476b4",
-            "dac3049ffdcce49b"
+            "dac3049ffdcce49b",
+            "eae5040f9963de30"
         ],
         "x": 230,
         "y": 560,
@@ -1368,7 +1540,8 @@
         "z": "6510951e07e95904",
         "name": "Drum and Fan Commands",
         "links": [
-            "d409aab11fde37db"
+            "d409aab11fde37db",
+            "fea5fd805c5048fe"
         ],
         "x": 310,
         "y": 80,
@@ -1632,7 +1805,8 @@
         "z": "225e7b059e1c99bf",
         "name": "Enable/Disable PID control",
         "links": [
-            "d2478c323769c186"
+            "d2478c323769c186",
+            "e3747c3c1ebb1790"
         ],
         "x": 270,
         "y": 360,
@@ -1778,8 +1952,8 @@
         "name": "Drum Control",
         "label": "Drum Motor",
         "tooltip": "",
-        "group": "f0a5c9b6a0073ebe",
-        "order": 0,
+        "group": "0e6370bdfcb56bb1",
+        "order": 1,
         "width": 0,
         "height": 0,
         "passthru": false,
@@ -1801,8 +1975,7 @@
         "y": 620,
         "wires": [
             [
-                "d409aab11fde37db",
-                "627d80809f046cf0"
+                "d409aab11fde37db"
             ]
         ]
     },
@@ -1832,27 +2005,865 @@
         "y": 620,
         "wires": [
             [
-                "e7ec9c7a27c9fc73",
-                "627d80809f046cf0"
+                "e7ec9c7a27c9fc73"
             ]
         ],
         "l": true
     },
     {
-        "id": "627d80809f046cf0",
-        "type": "debug",
+        "id": "b3736f6dccdb3993",
+        "type": "exec",
         "z": "225e7b059e1c99bf",
-        "name": "debug 1",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 500,
+        "command": "ip -br -f inet addr show | grep wlx",
+        "addpay": "",
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "winHide": false,
+        "oldrc": false,
+        "name": "Get IP address",
+        "x": 480,
+        "y": 720,
+        "wires": [
+            [
+                "4c2d80886039046c"
+            ],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "90814dc82ee38472",
+        "type": "inject",
+        "z": "225e7b059e1c99bf",
+        "name": "Trigger IP address",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "30",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "10",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 240,
+        "y": 720,
+        "wires": [
+            [
+                "b3736f6dccdb3993"
+            ]
+        ]
+    },
+    {
+        "id": "1aee8c1eceadde72",
+        "type": "ui_text",
+        "z": "225e7b059e1c99bf",
+        "group": "add62a6d08a1bf97",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "name": "Wireless status",
+        "label": "WiFi IP Address",
+        "format": "{{msg.payload}}",
+        "layout": "col-center",
+        "className": "",
+        "x": 960,
         "y": 720,
         "wires": []
+    },
+    {
+        "id": "4c2d80886039046c",
+        "type": "function",
+        "z": "225e7b059e1c99bf",
+        "name": "Parse IP address",
+        "func": "var text = msg.payload;\nmsg.payload = text.substr(-20, 18);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 730,
+        "y": 720,
+        "wires": [
+            [
+                "1aee8c1eceadde72"
+            ]
+        ]
+    },
+    {
+        "id": "99f748e9b86d1efb",
+        "type": "ui_text",
+        "z": "225e7b059e1c99bf",
+        "group": "69c704d3b69f3fd5",
+        "order": 1,
+        "width": 6,
+        "height": 1,
+        "name": "Timer display",
+        "label": "",
+        "format": "<font size=8>{{msg.payload}}</font>",
+        "layout": "row-center",
+        "x": 1250,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "8506765f9aea6d92",
+        "type": "ui_button",
+        "z": "225e7b059e1c99bf",
+        "name": "Start button",
+        "group": "69c704d3b69f3fd5",
+        "order": 2,
+        "width": 3,
+        "height": 1,
+        "passthru": false,
+        "label": "Start",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "start",
+        "topicType": "str",
+        "x": 770,
+        "y": 200,
+        "wires": [
+            [
+                "478702180c3ea072"
+            ]
+        ]
+    },
+    {
+        "id": "9d337d154b737c11",
+        "type": "ui_button",
+        "z": "225e7b059e1c99bf",
+        "name": "Stop/Reset button",
+        "group": "69c704d3b69f3fd5",
+        "order": 3,
+        "width": 3,
+        "height": 1,
+        "passthru": false,
+        "label": "Stop/Reset",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "stop",
+        "topicType": "str",
+        "x": 750,
+        "y": 260,
+        "wires": [
+            [
+                "478702180c3ea072"
+            ]
+        ]
+    },
+    {
+        "id": "478702180c3ea072",
+        "type": "function",
+        "z": "225e7b059e1c99bf",
+        "name": "Timer",
+        "func": "h = context.get('hours');\nm = context.get('minutes');\ns = context.get('seconds');\non = context.get('running');\nif(on)\n{\n    if(msg.topic == \"tick\")\n    {\n        s += 1;\n        if(s > 59)\n        {\n            s = 0;\n            m += 1;\n        }\n        if(m > 59)\n        {\n            m = 0;\n            h += 1;\n        }\n    }\n}\nif(msg.topic == \"start\")\n{\n    context.set('running', true);\n}\nif(msg.topic == \"stop\")\n{\n    context.set('running', false);\n    h = 0;\n    m = 0;\n    s = 0;\n}\ncontext.set('hours', h);\ncontext.set('minutes', m);\ncontext.set('seconds', s);\n\n/* format the timer string */\nh = h.toString();\nm = m.toString();\ns = s.toString();\n/* add leading zeros if needed */\nif(h.length < 2) h = \"0\" + h;\nif(m.length < 2) m = \"0\" + m;\nif(s.length < 2) s = \"0\" + s;\n/* pass the final string in the message payload */\nmsg.payload = h + \":\" + m + \":\" + s;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "// Code added here will be run once\n// whenever the node is started.\ncontext.set('hours', 0);\ncontext.set('minutes', 0);\ncontext.set('seconds', 0);\ncontext.set('running', false)",
+        "finalize": "",
+        "libs": [],
+        "x": 1040,
+        "y": 220,
+        "wires": [
+            [
+                "99f748e9b86d1efb"
+            ]
+        ]
+    },
+    {
+        "id": "0acbcd079b5a8ed8",
+        "type": "inject",
+        "z": "225e7b059e1c99bf",
+        "name": "Every second",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "1",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "tick",
+        "payloadType": "date",
+        "x": 760,
+        "y": 120,
+        "wires": [
+            [
+                "478702180c3ea072"
+            ]
+        ]
+    },
+    {
+        "id": "7adf40465a22dad6",
+        "type": "function",
+        "z": "83cf1951d3799d73",
+        "name": "Convert to setpoint format",
+        "func": "msg.topic = \"setpoint\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 720,
+        "y": 80,
+        "wires": [
+            [
+                "f05a246d6a7e8132"
+            ]
+        ]
+    },
+    {
+        "id": "82a4aa63b03a704d",
+        "type": "inject",
+        "z": "83cf1951d3799d73",
+        "name": "Initialize setpoint",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "70",
+        "payloadType": "num",
+        "x": 250,
+        "y": 80,
+        "wires": [
+            [
+                "eca8bfbfa957c317"
+            ]
+        ]
+    },
+    {
+        "id": "eca8bfbfa957c317",
+        "type": "ui_slider",
+        "z": "83cf1951d3799d73",
+        "name": "Setpoint",
+        "label": "Target Temperature",
+        "tooltip": "",
+        "group": "3ea417a6dcc15b38",
+        "order": 1,
+        "width": "0",
+        "height": "0",
+        "passthru": true,
+        "outs": "end",
+        "topic": "topic",
+        "topicType": "msg",
+        "min": "70",
+        "max": "500",
+        "step": "5",
+        "className": "",
+        "x": 480,
+        "y": 80,
+        "wires": [
+            [
+                "7adf40465a22dad6"
+            ]
+        ]
+    },
+    {
+        "id": "f05a246d6a7e8132",
+        "type": "link out",
+        "z": "83cf1951d3799d73",
+        "name": "Setpoint setting",
+        "links": [
+            "a6d7a26e2d91a06b"
+        ],
+        "x": 960,
+        "y": 80,
+        "wires": [],
+        "l": true
+    },
+    {
+        "id": "eae5040f9963de30",
+        "type": "link out",
+        "z": "83cf1951d3799d73",
+        "name": "Fan setting",
+        "links": [
+            "0765c15a33a02078"
+        ],
+        "x": 690,
+        "y": 160,
+        "wires": [],
+        "l": true
+    },
+    {
+        "id": "4c7880a2a9bccf14",
+        "type": "ui_slider",
+        "z": "83cf1951d3799d73",
+        "name": "Fan",
+        "label": "Fan",
+        "tooltip": "",
+        "group": "8366fe1b274cb777",
+        "order": 1,
+        "width": "0",
+        "height": "0",
+        "passthru": false,
+        "outs": "end",
+        "topic": "Fan",
+        "topicType": "str",
+        "min": 0,
+        "max": "100",
+        "step": "5",
+        "className": "",
+        "x": 490,
+        "y": 160,
+        "wires": [
+            [
+                "eae5040f9963de30"
+            ]
+        ]
+    },
+    {
+        "id": "0c2a431b2e340e18",
+        "type": "link in",
+        "z": "83cf1951d3799d73",
+        "name": "Fan setting from roaster",
+        "links": [
+            "e375b9ab7c0d4f44"
+        ],
+        "x": 250,
+        "y": 160,
+        "wires": [
+            [
+                "4c7880a2a9bccf14"
+            ]
+        ],
+        "l": true
+    },
+    {
+        "id": "ed41119d90e815d8",
+        "type": "ui_gauge",
+        "z": "83cf1951d3799d73",
+        "name": "Temperature",
+        "group": "d400a092d1bcda1c",
+        "order": 1,
+        "width": "0",
+        "height": "0",
+        "gtype": "gage",
+        "title": "Current Temperature",
+        "label": "deg F",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "500",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "className": "",
+        "x": 790,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "3c9936c7122f6423",
+        "type": "link in",
+        "z": "83cf1951d3799d73",
+        "name": "Temperature",
+        "links": [
+            "420aac392a01857a"
+        ],
+        "x": 210,
+        "y": 220,
+        "wires": [
+            [
+                "ed41119d90e815d8",
+                "5009571b98c22907"
+            ]
+        ],
+        "l": true
+    },
+    {
+        "id": "f30d79714f5d8568",
+        "type": "ui_chart",
+        "z": "83cf1951d3799d73",
+        "name": "Setpoint and Temperature",
+        "group": "b617090a6afb3fbd",
+        "order": 1,
+        "width": 11,
+        "height": 5,
+        "label": "Target and Measured Temperature (deg F)",
+        "chartType": "line",
+        "legend": "true",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "Waiting for data",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "1000",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 780,
+        "y": 280,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "d419da4e81ed6b1c",
+        "type": "ui_button",
+        "z": "83cf1951d3799d73",
+        "name": "Clear graph button",
+        "group": "b617090a6afb3fbd",
+        "order": 2,
+        "width": 3,
+        "height": 1,
+        "passthru": false,
+        "label": "Clear graphs",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "[]",
+        "payloadType": "json",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 230,
+        "y": 280,
+        "wires": [
+            [
+                "f30d79714f5d8568",
+                "2105cbf3fca5e277"
+            ]
+        ]
+    },
+    {
+        "id": "3faa1700a5c5e485",
+        "type": "link in",
+        "z": "83cf1951d3799d73",
+        "name": "Setpoint",
+        "links": [
+            "b13727e26dab3c2b"
+        ],
+        "x": 200,
+        "y": 340,
+        "wires": [
+            [
+                "f30d79714f5d8568"
+            ]
+        ],
+        "l": true
+    },
+    {
+        "id": "5009571b98c22907",
+        "type": "subflow:eae5d0f8246cac51",
+        "z": "83cf1951d3799d73",
+        "name": "",
+        "x": 420,
+        "y": 240,
+        "wires": [
+            [
+                "fa9e4d05ca45c2df"
+            ]
+        ]
+    },
+    {
+        "id": "e86622c40d76a71b",
+        "type": "ui_switch",
+        "z": "83cf1951d3799d73",
+        "name": "Enable switch",
+        "label": "Enable control",
+        "tooltip": "",
+        "group": "4c0b02b7f235c118",
+        "order": 5,
+        "width": "0",
+        "height": "0",
+        "passthru": false,
+        "decouple": "true",
+        "topic": "enable",
+        "topicType": "str",
+        "style": "",
+        "onvalue": "1",
+        "onvalueType": "num",
+        "onicon": "",
+        "oncolor": "",
+        "offvalue": "0",
+        "offvalueType": "num",
+        "officon": "",
+        "offcolor": "",
+        "animate": false,
+        "className": "",
+        "x": 480,
+        "y": 480,
+        "wires": [
+            [
+                "e3747c3c1ebb1790"
+            ]
+        ]
+    },
+    {
+        "id": "e3747c3c1ebb1790",
+        "type": "link out",
+        "z": "83cf1951d3799d73",
+        "name": "Enable/Disable PID control",
+        "links": [
+            "53a6aea13f8eaf34",
+            "c9b6629ec3cc8c8d"
+        ],
+        "x": 740,
+        "y": 480,
+        "wires": [],
+        "l": true
+    },
+    {
+        "id": "9342c87b8fdbbc90",
+        "type": "link in",
+        "z": "83cf1951d3799d73",
+        "name": "PID Enable Status",
+        "links": [
+            "730b65d89ff909df"
+        ],
+        "x": 230,
+        "y": 480,
+        "wires": [
+            [
+                "e86622c40d76a71b"
+            ]
+        ],
+        "l": true
+    },
+    {
+        "id": "0f81bcc3746619ea",
+        "type": "link in",
+        "z": "83cf1951d3799d73",
+        "name": "Heater setting from roaster",
+        "links": [
+            "8159242c779048f2"
+        ],
+        "x": 250,
+        "y": 400,
+        "wires": [
+            [
+                "5cc6755ca62bbfa0",
+                "2105cbf3fca5e277"
+            ]
+        ],
+        "l": true
+    },
+    {
+        "id": "4dab8acaa438db80",
+        "type": "ui_text",
+        "z": "83cf1951d3799d73",
+        "group": "f3efac7133f890d6",
+        "order": 1,
+        "width": 6,
+        "height": 1,
+        "name": "Timer display",
+        "label": "",
+        "format": "<font size=8>{{msg.payload}}</font>",
+        "layout": "row-center",
+        "className": "",
+        "x": 730,
+        "y": 640,
+        "wires": []
+    },
+    {
+        "id": "55c01aa264ae545e",
+        "type": "ui_button",
+        "z": "83cf1951d3799d73",
+        "name": "Start button",
+        "group": "f3efac7133f890d6",
+        "order": 2,
+        "width": 3,
+        "height": 1,
+        "passthru": false,
+        "label": "Start",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "start",
+        "topicType": "str",
+        "x": 250,
+        "y": 620,
+        "wires": [
+            [
+                "709426889eb63891"
+            ]
+        ]
+    },
+    {
+        "id": "e2d1d96776612f0a",
+        "type": "ui_button",
+        "z": "83cf1951d3799d73",
+        "name": "Stop/Reset button",
+        "group": "f3efac7133f890d6",
+        "order": 3,
+        "width": 3,
+        "height": 1,
+        "passthru": false,
+        "label": "Stop/Reset",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "stop",
+        "topicType": "str",
+        "x": 230,
+        "y": 680,
+        "wires": [
+            [
+                "709426889eb63891"
+            ]
+        ]
+    },
+    {
+        "id": "709426889eb63891",
+        "type": "function",
+        "z": "83cf1951d3799d73",
+        "name": "Timer",
+        "func": "h = context.get('hours');\nm = context.get('minutes');\ns = context.get('seconds');\non = context.get('running');\nif(on)\n{\n    if(msg.topic == \"tick\")\n    {\n        s += 1;\n        if(s > 59)\n        {\n            s = 0;\n            m += 1;\n        }\n        if(m > 59)\n        {\n            m = 0;\n            h += 1;\n        }\n    }\n}\nif(msg.topic == \"start\")\n{\n    context.set('running', true);\n}\nif(msg.topic == \"stop\")\n{\n    context.set('running', false);\n    h = 0;\n    m = 0;\n    s = 0;\n}\ncontext.set('hours', h);\ncontext.set('minutes', m);\ncontext.set('seconds', s);\n\n/* format the timer string */\nh = h.toString();\nm = m.toString();\ns = s.toString();\n/* add leading zeros if needed */\nif(h.length < 2) h = \"0\" + h;\nif(m.length < 2) m = \"0\" + m;\nif(s.length < 2) s = \"0\" + s;\n/* pass the final string in the message payload */\nmsg.payload = h + \":\" + m + \":\" + s;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "// Code added here will be run once\n// whenever the node is started.\ncontext.set('hours', 0);\ncontext.set('minutes', 0);\ncontext.set('seconds', 0);\ncontext.set('running', false)",
+        "finalize": "",
+        "libs": [],
+        "x": 520,
+        "y": 640,
+        "wires": [
+            [
+                "4dab8acaa438db80"
+            ]
+        ]
+    },
+    {
+        "id": "5ff68574231bb64c",
+        "type": "inject",
+        "z": "83cf1951d3799d73",
+        "name": "Every second",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "1",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "tick",
+        "payloadType": "date",
+        "x": 240,
+        "y": 540,
+        "wires": [
+            [
+                "709426889eb63891"
+            ]
+        ]
+    },
+    {
+        "id": "721bb5f58036bc59",
+        "type": "ui_switch",
+        "z": "83cf1951d3799d73",
+        "name": "Drum Control",
+        "label": "Drum Motor",
+        "tooltip": "",
+        "group": "f0a5c9b6a0073ebe",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "decouple": "true",
+        "topic": "topic",
+        "topicType": "msg",
+        "style": "",
+        "onvalue": ":>+/",
+        "onvalueType": "str",
+        "onicon": "",
+        "oncolor": "",
+        "offvalue": ":>-/",
+        "offvalueType": "str",
+        "officon": "",
+        "offcolor": "",
+        "animate": false,
+        "className": "",
+        "x": 520,
+        "y": 740,
+        "wires": [
+            [
+                "fea5fd805c5048fe"
+            ]
+        ]
+    },
+    {
+        "id": "fea5fd805c5048fe",
+        "type": "link out",
+        "z": "83cf1951d3799d73",
+        "name": "Drum and Fan commands",
+        "mode": "link",
+        "links": [
+            "83f13169396af33b"
+        ],
+        "x": 860,
+        "y": 740,
+        "wires": [],
+        "l": true
+    },
+    {
+        "id": "594802a3876166f3",
+        "type": "link in",
+        "z": "83cf1951d3799d73",
+        "name": "Drum motor status from roaster",
+        "links": [
+            "7e9fd46f1e4d8990"
+        ],
+        "x": 270,
+        "y": 740,
+        "wires": [
+            [
+                "721bb5f58036bc59"
+            ]
+        ],
+        "l": true
+    },
+    {
+        "id": "5cc6755ca62bbfa0",
+        "type": "ui_gauge",
+        "z": "83cf1951d3799d73",
+        "name": "Heater output",
+        "group": "e121f5f963aae468",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Heater Output",
+        "label": "Percent",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "className": "",
+        "x": 560,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "2105cbf3fca5e277",
+        "type": "ui_chart",
+        "z": "83cf1951d3799d73",
+        "name": "Heater output",
+        "group": "3808bd576c898583",
+        "order": 0,
+        "width": "9",
+        "height": "3",
+        "label": "Heater Output (Percent)",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "Waiting for data",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "100",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 560,
+        "y": 360,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "fa9e4d05ca45c2df",
+        "type": "function",
+        "z": "83cf1951d3799d73",
+        "name": "Relabel",
+        "func": "msg.topic = \"Measured\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 580,
+        "y": 260,
+        "wires": [
+            [
+                "f30d79714f5d8568"
+            ]
+        ]
     },
     {
         "id": "9f019c792ed476b4",
@@ -2127,7 +3138,7 @@
         "y": 340,
         "wires": [
             [
-                "1ac5c3066f45033d"
+                "2c56881e7e8f26ff"
             ]
         ],
         "l": true
@@ -2145,7 +3156,7 @@
         "wires": [
             [
                 "324a21c99f93b411",
-                "5a52ca2c8c1e216f"
+                "1b9fb2a75615ef5d"
             ]
         ],
         "l": true
@@ -2175,93 +3186,6 @@
         "x": 780,
         "y": 480,
         "wires": []
-    },
-    {
-        "id": "3acab7c00ae134ff",
-        "type": "function",
-        "z": "84c93d7c7867d6c7",
-        "name": "Convert to setpoint format",
-        "func": "msg.topic = \"setpoint\";\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 740,
-        "y": 540,
-        "wires": [
-            [
-                "7eeceb89a6fe4c4b"
-            ]
-        ]
-    },
-    {
-        "id": "7d7f600ab66eed02",
-        "type": "inject",
-        "z": "84c93d7c7867d6c7",
-        "name": "Initialize setpoint",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": true,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "70",
-        "payloadType": "num",
-        "x": 270,
-        "y": 540,
-        "wires": [
-            [
-                "153ef2a5bdf3fa3d"
-            ]
-        ]
-    },
-    {
-        "id": "153ef2a5bdf3fa3d",
-        "type": "ui_slider",
-        "z": "84c93d7c7867d6c7",
-        "name": "Setpoint",
-        "label": "Setpoint",
-        "tooltip": "",
-        "group": "75c8cc1919f5db68",
-        "order": 4,
-        "width": 6,
-        "height": 1,
-        "passthru": true,
-        "outs": "end",
-        "topic": "topic",
-        "topicType": "msg",
-        "min": "70",
-        "max": "500",
-        "step": "5",
-        "x": 500,
-        "y": 540,
-        "wires": [
-            [
-                "3acab7c00ae134ff"
-            ]
-        ]
-    },
-    {
-        "id": "7eeceb89a6fe4c4b",
-        "type": "link out",
-        "z": "84c93d7c7867d6c7",
-        "name": "Setpoint setting",
-        "links": [
-            "a6d7a26e2d91a06b"
-        ],
-        "x": 980,
-        "y": 540,
-        "wires": [],
-        "l": true
     },
     {
         "id": "8ef21c14b69b3a83",
@@ -2426,19 +3350,6 @@
         "wires": []
     },
     {
-        "id": "1ac5c3066f45033d",
-        "type": "subflow:eae5d0f8246cac51",
-        "z": "84c93d7c7867d6c7",
-        "name": "",
-        "x": 560,
-        "y": 300,
-        "wires": [
-            [
-                "2c56881e7e8f26ff"
-            ]
-        ]
-    },
-    {
         "id": "616042110405171a",
         "type": "subflow:eae5d0f8246cac51",
         "z": "84c93d7c7867d6c7",
@@ -2448,19 +3359,6 @@
         "wires": [
             [
                 "2c56881e7e8f26ff"
-            ]
-        ]
-    },
-    {
-        "id": "5a52ca2c8c1e216f",
-        "type": "subflow:eae5d0f8246cac51",
-        "z": "84c93d7c7867d6c7",
-        "name": "",
-        "x": 560,
-        "y": 440,
-        "wires": [
-            [
-                "1b9fb2a75615ef5d"
             ]
         ]
     },
@@ -2532,6 +3430,93 @@
         "wires": []
     },
     {
+        "id": "3acab7c00ae134ff",
+        "type": "function",
+        "z": "84c93d7c7867d6c7",
+        "name": "Convert to setpoint format",
+        "func": "msg.topic = \"setpoint\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 760,
+        "y": 560,
+        "wires": [
+            [
+                "7eeceb89a6fe4c4b"
+            ]
+        ]
+    },
+    {
+        "id": "7d7f600ab66eed02",
+        "type": "inject",
+        "z": "84c93d7c7867d6c7",
+        "name": "Initialize setpoint",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "70",
+        "payloadType": "num",
+        "x": 290,
+        "y": 560,
+        "wires": [
+            [
+                "153ef2a5bdf3fa3d"
+            ]
+        ]
+    },
+    {
+        "id": "153ef2a5bdf3fa3d",
+        "type": "ui_slider",
+        "z": "84c93d7c7867d6c7",
+        "name": "Setpoint",
+        "label": "Setpoint",
+        "tooltip": "",
+        "group": "75c8cc1919f5db68",
+        "order": 4,
+        "width": 6,
+        "height": 1,
+        "passthru": true,
+        "outs": "end",
+        "topic": "topic",
+        "topicType": "msg",
+        "min": "70",
+        "max": "500",
+        "step": "5",
+        "x": 520,
+        "y": 560,
+        "wires": [
+            [
+                "3acab7c00ae134ff"
+            ]
+        ]
+    },
+    {
+        "id": "7eeceb89a6fe4c4b",
+        "type": "link out",
+        "z": "84c93d7c7867d6c7",
+        "name": "Setpoint setting",
+        "links": [
+            "a6d7a26e2d91a06b"
+        ],
+        "x": 1000,
+        "y": 560,
+        "wires": [],
+        "l": true
+    },
+    {
         "id": "13137449574042f0",
         "type": "ui_ui_control",
         "z": "68ed597e2c434a88",
@@ -2588,123 +3573,6 @@
         "wires": [
             [
                 "13137449574042f0"
-            ]
-        ]
-    },
-    {
-        "id": "99f748e9b86d1efb",
-        "type": "ui_text",
-        "z": "fe8e62537f119f1d",
-        "group": "69c704d3b69f3fd5",
-        "order": 1,
-        "width": 6,
-        "height": 1,
-        "name": "Timer display",
-        "label": "",
-        "format": "<font size=8>{{msg.payload}}</font>",
-        "layout": "row-center",
-        "x": 830,
-        "y": 180,
-        "wires": []
-    },
-    {
-        "id": "8506765f9aea6d92",
-        "type": "ui_button",
-        "z": "fe8e62537f119f1d",
-        "name": "Start button",
-        "group": "69c704d3b69f3fd5",
-        "order": 2,
-        "width": 3,
-        "height": 1,
-        "passthru": false,
-        "label": "Start",
-        "tooltip": "",
-        "color": "",
-        "bgcolor": "",
-        "icon": "",
-        "payload": "",
-        "payloadType": "str",
-        "topic": "start",
-        "topicType": "str",
-        "x": 350,
-        "y": 160,
-        "wires": [
-            [
-                "478702180c3ea072"
-            ]
-        ]
-    },
-    {
-        "id": "9d337d154b737c11",
-        "type": "ui_button",
-        "z": "fe8e62537f119f1d",
-        "name": "Stop/Reset button",
-        "group": "69c704d3b69f3fd5",
-        "order": 3,
-        "width": 3,
-        "height": 1,
-        "passthru": false,
-        "label": "Stop/Reset",
-        "tooltip": "",
-        "color": "",
-        "bgcolor": "",
-        "icon": "",
-        "payload": "",
-        "payloadType": "str",
-        "topic": "stop",
-        "topicType": "str",
-        "x": 330,
-        "y": 220,
-        "wires": [
-            [
-                "478702180c3ea072"
-            ]
-        ]
-    },
-    {
-        "id": "478702180c3ea072",
-        "type": "function",
-        "z": "fe8e62537f119f1d",
-        "name": "Timer",
-        "func": "h = context.get('hours');\nm = context.get('minutes');\ns = context.get('seconds');\non = context.get('running');\nif(on)\n{\n    if(msg.topic == \"tick\")\n    {\n        s += 1;\n        if(s > 59)\n        {\n            s = 0;\n            m += 1;\n        }\n        if(m > 59)\n        {\n            m = 0;\n            h += 1;\n        }\n    }\n}\nif(msg.topic == \"start\")\n{\n    context.set('running', true);\n}\nif(msg.topic == \"stop\")\n{\n    context.set('running', false);\n    h = 0;\n    m = 0;\n    s = 0;\n}\ncontext.set('hours', h);\ncontext.set('minutes', m);\ncontext.set('seconds', s);\n\n/* format the timer string */\nh = h.toString();\nm = m.toString();\ns = s.toString();\n/* add leading zeros if needed */\nif(h.length < 2) h = \"0\" + h;\nif(m.length < 2) m = \"0\" + m;\nif(s.length < 2) s = \"0\" + s;\n/* pass the final string in the message payload */\nmsg.payload = h + \":\" + m + \":\" + s;\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "// Code added here will be run once\n// whenever the node is started.\ncontext.set('hours', 0);\ncontext.set('minutes', 0);\ncontext.set('seconds', 0);\ncontext.set('running', false)",
-        "finalize": "",
-        "libs": [],
-        "x": 620,
-        "y": 180,
-        "wires": [
-            [
-                "99f748e9b86d1efb"
-            ]
-        ]
-    },
-    {
-        "id": "0acbcd079b5a8ed8",
-        "type": "inject",
-        "z": "fe8e62537f119f1d",
-        "name": "Every second",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "1",
-        "crontab": "",
-        "once": true,
-        "onceDelay": 0.1,
-        "topic": "tick",
-        "payloadType": "date",
-        "x": 340,
-        "y": 80,
-        "wires": [
-            [
-                "478702180c3ea072"
             ]
         ]
     }
