@@ -43,6 +43,14 @@
         "info": ""
     },
     {
+        "id": "c5a9338dcd84adca",
+        "type": "tab",
+        "label": "UI Shutdown",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
         "id": "68ed597e2c434a88",
         "type": "tab",
         "label": "UI Supervisor",
@@ -209,8 +217,9 @@
         "tab": "053d3106b7802878",
         "order": 1,
         "disp": true,
-        "width": 4,
-        "collapse": false
+        "width": "4",
+        "collapse": false,
+        "className": ""
     },
     {
         "id": "cf2399f4fbeaac53",
@@ -607,6 +616,26 @@
         "order": 9,
         "disp": false,
         "width": "9",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "9344af6152bd03f8",
+        "type": "ui_tab",
+        "name": "Shutdown",
+        "icon": "dashboard",
+        "order": 4,
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "12039ac876581761",
+        "type": "ui_group",
+        "name": "Shutdown",
+        "tab": "9344af6152bd03f8",
+        "order": 1,
+        "disp": false,
+        "width": "8",
         "collapse": false,
         "className": ""
     },
@@ -1182,7 +1211,9 @@
             [
                 "47c25550d6e0fcf1"
             ],
-            []
+            [
+                "47c25550d6e0fcf1"
+            ]
         ]
     },
     {
@@ -1297,7 +1328,7 @@
         "name": "PID control",
         "setpoint": "70",
         "pb": "400",
-        "ti": "3600",
+        "ti": "1800",
         "td": "0",
         "integral_default": "0.3",
         "smooth_factor": "3",
@@ -1593,6 +1624,7 @@
         "label": "State",
         "format": "{{msg.payload}}",
         "layout": "row-spread",
+        "className": "",
         "x": 530,
         "y": 100,
         "wires": []
@@ -3517,6 +3549,71 @@
         "l": true
     },
     {
+        "id": "f9e48f516b5a6533",
+        "type": "ui_button",
+        "z": "c5a9338dcd84adca",
+        "name": "",
+        "group": "12039ac876581761",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Shutdown",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "red",
+        "className": "",
+        "icon": "",
+        "payload": "Shutdown",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 460,
+        "y": 240,
+        "wires": [
+            [
+                "b711626f77107115"
+            ]
+        ]
+    },
+    {
+        "id": "8164b5e8348849e9",
+        "type": "ui_text",
+        "z": "c5a9338dcd84adca",
+        "group": "12039ac876581761",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Press the big red button to shut down the computer",
+        "format": "",
+        "layout": "col-center",
+        "className": "",
+        "x": 650,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "b711626f77107115",
+        "type": "exec",
+        "z": "c5a9338dcd84adca",
+        "command": "sudo systemctl poweroff",
+        "addpay": "",
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "winHide": false,
+        "oldrc": false,
+        "name": "",
+        "x": 750,
+        "y": 240,
+        "wires": [
+            [],
+            [],
+            []
+        ]
+    },
+    {
         "id": "13137449574042f0",
         "type": "ui_ui_control",
         "z": "68ed597e2c434a88",
@@ -3526,7 +3623,8 @@
         "y": 160,
         "wires": [
             [
-                "033ad45fb8395aa3"
+                "033ad45fb8395aa3",
+                "6441b97e1cedd954"
             ]
         ]
     },
@@ -3575,5 +3673,22 @@
                 "13137449574042f0"
             ]
         ]
+    },
+    {
+        "id": "6441b97e1cedd954",
+        "type": "debug",
+        "z": "68ed597e2c434a88",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 560,
+        "y": 240,
+        "wires": []
     }
 ]
