@@ -1328,7 +1328,7 @@
         "name": "PID control",
         "setpoint": "70",
         "pb": "400",
-        "ti": "1800",
+        "ti": "900",
         "td": "0",
         "integral_default": "0.3",
         "smooth_factor": "3",
@@ -2305,7 +2305,7 @@
         "order": 1,
         "width": "0",
         "height": "0",
-        "passthru": true,
+        "passthru": false,
         "outs": "end",
         "topic": "topic",
         "topicType": "msg",
@@ -2521,7 +2521,8 @@
         "y": 340,
         "wires": [
             [
-                "f30d79714f5d8568"
+                "f30d79714f5d8568",
+                "eca8bfbfa957c317"
             ]
         ],
         "l": true
@@ -3170,7 +3171,8 @@
         "y": 340,
         "wires": [
             [
-                "2c56881e7e8f26ff"
+                "2c56881e7e8f26ff",
+                "153ef2a5bdf3fa3d"
             ]
         ],
         "l": true
