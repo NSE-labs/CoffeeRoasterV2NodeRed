@@ -206,7 +206,7 @@
         "type": "ui_tab",
         "name": "Basic Controls",
         "icon": "dashboard",
-        "order": 1,
+        "order": 2,
         "disabled": false,
         "hidden": false
     },
@@ -506,7 +506,7 @@
         "type": "ui_tab",
         "name": "Temperature Control",
         "icon": "dashboard",
-        "order": 2,
+        "order": 1,
         "disabled": false,
         "hidden": false
     },
@@ -1194,7 +1194,7 @@
         "rules": [
             {
                 "t": "eq",
-                "v": "1",
+                "v": "0",
                 "vt": "num"
             },
             {
@@ -1330,9 +1330,9 @@
         "name": "PID control",
         "setpoint": "70",
         "pb": "400",
-        "ti": "200",
+        "ti": "800",
         "td": "0",
-        "integral_default": "0.3",
+        "integral_default": "0",
         "smooth_factor": "3",
         "max_interval": "30",
         "enable": 1,
