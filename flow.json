@@ -929,7 +929,7 @@
             "420aac392a01857a"
         ],
         "x": 190,
-        "y": 240,
+        "y": 300,
         "wires": [
             [
                 "67b7b48fa487db4e",
@@ -1178,7 +1178,8 @@
         "y": 120,
         "wires": [
             [
-                "37ae0ebe78a6614d"
+                "37ae0ebe78a6614d",
+                "95159637cac57b77"
             ]
         ],
         "l": true
@@ -1279,7 +1280,7 @@
         "initialize": "// Code added here will be run once\n// whenever the node is started.\ncontext.set('OutOfRangeCount', 0);",
         "finalize": "",
         "libs": [],
-        "x": 420,
+        "x": 380,
         "y": 360,
         "wires": [
             [
@@ -1300,6 +1301,7 @@
         "ok": "OK",
         "cancel": "",
         "raw": false,
+        "className": "",
         "topic": "Problem with thermocouple - control disabled",
         "name": "Indicate safety trigger",
         "x": 540,
@@ -1328,7 +1330,7 @@
         "name": "PID control",
         "setpoint": "70",
         "pb": "400",
-        "ti": "900",
+        "ti": "200",
         "td": "0",
         "integral_default": "0.3",
         "smooth_factor": "3",
@@ -1352,14 +1354,14 @@
         "type": "function",
         "z": "0625af20015678ce",
         "name": "Average Temperature",
-        "func": "var temperature = msg.payload;\nvar sendMessage = false;\nvar average = flow.get('temperature_average');\nif(!average) average = 0;\nvar count = flow.get('temperature_count');\nif(!count) count = 0;\naverage += temperature;\ncount++;\nif(count >= 10)\n{ \n    average = average/10;\n    msg.payload = average;\n    count = 0;\n    average = 0;\n    sendMessage = true;\n}\nflow.set('temperature_average', average);\nflow.set('temperature_count', count);\nif(sendMessage == true)\n{\n    return msg;     \n}\nelse\n{\n    return null;\n}\n",
+        "func": "var sendMessage = false;\nvar average = flow.get('temperature_average');\nif (!average) average = 0;\nvar count = flow.get('temperature_count');\nif (!count) count = 0;\n\nswitch(msg.topic)\n{\n    case \"Temperature\":\n        average += msg.payload;\n        count++;\n        if (count >= 10) {\n            msg.payload = average /count;\n            count = 0;\n            average = 0;\n            sendMessage = true;\n        }\n        flow.set('temperature_average', average);\n        flow.set('temperature_count', count);\n        break;\n    case \"enable\":\n        /* send a temperature to trigger the enable */\n        if(count > 0)\n        {\n            /* send the partially accumulated average */\n            msg.payload = average / count;\n        }\n        else\n        {\n            /* Unfortunately we have just reset the \n            * average so don't have a temperature sample\n            * yet. In this case send a high temperature.\n            * This is safer than sending a low temperature\n            * since it should cause the heater output \n            * to reduce rather than increase.\n            */\n            msg.payload = 400; \n        }\n        msg.topic = \"Temperature\";\n        sendMessage = true;\n        break;\n}\n\nif(sendMessage == true)\n{\n    return msg;     \n}\nelse\n{\n    return null;\n}\n",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 380,
-        "y": 280,
+        "x": 400,
+        "y": 300,
         "wires": [
             [
                 "37ae0ebe78a6614d"
@@ -3625,8 +3627,7 @@
         "y": 160,
         "wires": [
             [
-                "033ad45fb8395aa3",
-                "6441b97e1cedd954"
+                "033ad45fb8395aa3"
             ]
         ]
     },
@@ -3675,22 +3676,5 @@
                 "13137449574042f0"
             ]
         ]
-    },
-    {
-        "id": "6441b97e1cedd954",
-        "type": "debug",
-        "z": "68ed597e2c434a88",
-        "name": "debug 1",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 560,
-        "y": 240,
-        "wires": []
     }
 ]
